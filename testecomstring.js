@@ -20,10 +20,10 @@ function parfodão(x){
 // parfodão(1222)
 
 function testefodao(x,y){
-    return x * y
+    return 'XOCO'
 
 }
 
 i =  testefodao(8e-2,6)
-console.log(i)
+console.log(i + ' late')
 
