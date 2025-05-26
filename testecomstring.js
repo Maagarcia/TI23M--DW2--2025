@@ -16,8 +16,8 @@ function parfodão(x){
 // console.log(x)
 // console.log(par(21))
 
-// parfodão(1221)
-// parfodão(1222)
+parfodão(1221)
+parfodão(1222)
 
 function testefodao(x,y){
     return 'XOCO'
@@ -25,5 +25,5 @@ function testefodao(x,y){
 }
 
 i =  testefodao(8e-2,6)
-console.log(i + ' late')
+// console.log(i + ' late')
 

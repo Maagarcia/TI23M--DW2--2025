@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Desculpa professor</title>
+    <!-- <link rel="stylesheet" href="./desculpa.css" /> -->
+    <!-- <script src="./desculpa.js" defer></script> -->
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+body {
+  background: linear-gradient(to right, #233329, #41b883);
+}
+
+.grid-container {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  height: 100vh;
+  grid-template-columns: repeat(4, 100px);
+  grid-template-rows: minmax(120px, auto) repeat(5, 100px);
+}
+
+.grid-container > button {
+  cursor: pointer;
+  font-size: 2rem;
+  border: none;
+  outline: none;
+  background-color: #111;
+  color: #eee;
+}
+.grid-container > button:hover {
+  background-color: #eee;
+  color: #111;
+}
+
+.grid-container > .operador {
+  background: #41b88375;
+}
+
+.span-2 {
+  grid-column: span 2;
+}
+
+.grid-container > .display-container {
+  grid-column: 1 / -1; /* ocupa todas as colunas. define onde começa e onde termina a coluna. */
+  background-color: #222;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-around;
+  padding: 10px;
+  /* Indica que as palavras normalmente inquebráveis podem ser quebrados em pontos arbitrários se não houver pontos de quebra de outra forma aceitáveis na linha. */
+  word-wrap: break-word;
+  /* Para evitar excesso, quebras de palavras devem ser inseridas entre quaisquer dois caracteres (excluindo texto chinês/japonês/coreano). */
+  word-break: break-all;
+}
+
+.grid-container > .display-container > .buffer {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 1.5rem;
+}
+
+.grid-container > .display-container > .display {
+  color: white;
+  font-size: 2.5rem;
+}
+
+    </style>
+  </head>
+  <body>
+    <div class="grid-container">
+      <div class="display-container">
+        <div txt-buffer class="buffer"></div>
+        <div txt-display class="display"></div>
+      </div>
+      <button btn-ac class="span-2">AC</button>
+      <button btn-delete>DEL</button>
+      <button btn-operador class="operador">÷</button>
+      <button btn-numero>1</button>
+      <button btn-numero>2</button>
+      <button btn-numero>3</button>
+      <button btn-operador class="operador">*</button>
+      <button btn-numero>4</button>
+      <button btn-numero>5</button>
+      <button btn-numero>6</button>
+      <button btn-operador class="operador">+</button>
+      <button btn-numero>7</button>
+      <button btn-numero>8</button>
+      <button btn-numero>9</button>
+      <button btn-operador class="operador">-</button>
+      <button btn-numero class="span-2">.</button>
+      <button btn-numero>0</button>
+      <button btn-igual class="operador">=</button>
+    </div>
+  </body>
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const displayElemento = document.querySelector("[txt-display]");
+  const bufferElemento = document.querySelector("[txt-buffer]");
+  const btnNumeros = document.querySelectorAll("[btn-numero]");
+  const btnOperacoes = document.querySelectorAll("[btn-operador]");
+  const btnAC = document.querySelector("[btn-ac]");
+  const btnDelete = document.querySelector("[btn-delete]");
+  const btnIgual = document.querySelector("[btn-igual]");
+
+  const calculadora = {
+    operandoAnterior: "",
+    operandoAtual: "",
+    operador: "",
+    bufferTextoElemento: bufferElemento,
+    displayTextoElemento: displayElemento,
+  };
+
+  function atualizaDisplay(calc) {
+    calc.bufferTextoElemento.innerHTML = `<p>${calc.operandoAnterior} ${calc.operador}</p>`;
+    calc.displayTextoElemento.textContent = calc.operandoAtual || "0";
+  }
+
+  function limpaVariaveis(calc) {
+    calc.operandoAnterior = "";
+    calc.operandoAtual = "";
+    calc.operador = "";
+    atualizaDisplay(calc);
+  }
+
+  function adicionaNumero(calc, numero) {
+    if (numero === "." && calc.operandoAtual.includes(".")) return;
+    calc.operandoAtual += numero;
+    atualizaDisplay(calc);
+  }
+
+  function escolheOperador(calc, operador) {
+    if (calc.operandoAtual === "") return;
+    if (calc.operandoAnterior !== "") {
+      executaCalculo(calc);
+    }
+    calc.operador = operador;
+    calc.operandoAnterior = calc.operandoAtual;
+    calc.operandoAtual = "";
+    atualizaDisplay(calc);
+  }
+
+  function executaCalculo(calc) {
+    const anterior = parseFloat(calc.operandoAnterior);
+    const atual = parseFloat(calc.operandoAtual);
+    if (isNaN(anterior) || isNaN(atual)) return;
+
+    let resultado = 0;
+    switch (calc.operador) {
+      case "+":
+        resultado = anterior + atual;
+        break;
+      case "-":
+        resultado = anterior - atual;
+        break;
+      case "*":
+        resultado = anterior * atual;
+        break;
+      case "÷":
+        resultado = anterior / atual;
+        break;
+      default:
+        return;
+    }
+
+    calc.operandoAtual = resultado.toString();
+    calc.operador = "";
+    calc.operandoAnterior = "";
+    atualizaDisplay(calc);
+  }
+
+  function apagaDigito(calc) {
+    calc.operandoAtual = calc.operandoAtual.toString().slice(0, -1);
+    atualizaDisplay(calc);
+  }
+
+  btnNumeros.forEach(botao => {
+    botao.addEventListener("click", () => {
+      adicionaNumero(calculadora, botao.textContent);
+    });
+  });
+
+  btnOperacoes.forEach(botao => {
+    botao.addEventListener("click", () => {
+      escolheOperador(calculadora, botao.textContent);
+    });
+  });
+
+  btnAC.addEventListener("click", () => limpaVariaveis(calculadora));
+  btnDelete.addEventListener("click", () => apagaDigito(calculadora));
+  btnIgual.addEventListener("click", () => executaCalculo(calculadora));
+});
+  </script>
+</html>

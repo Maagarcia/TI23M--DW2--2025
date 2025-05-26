@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lampada</title>
+    <script src="lampada.js" defer></script>
+</head> 
+<style>
+    .container{
+        height: 100vh;        
+    }
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+    }
+    .box{
+        height: 100px;
+        width: 100px;
+
+    }
+
+</style>
+<body>
+    <div class="container">
+        <div class="box">
+            <img src="./imagenslampada/lampada-off.jpg" alt="" id="imagem" onclick="mudar()">
+        </div>
+    </div>    
+</body>
+</html>

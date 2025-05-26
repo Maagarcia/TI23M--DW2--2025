@@ -1,0 +1,30 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+.cookie{
+    width: 100px;
+    height: 100px;
+    background-color: brown;
+    border: 1px black solid;
+    border-radius: 50%; 
+    background-image:url(https://static.wikia.nocookie.net/cookieclicker/images/5/5a/PerfectCookie.png/revision/latest?cb=20130827014912);
+    background-size: contain;
+}
+
+#cursor{
+    width: 100px;
+    height: 30px
+
+}
+
+.cursores {
+    width: 100px;
+    height: 100px;
+    background-color: aqua;
+    background-image: url(./imagens/1000_F_596479011_4LAtyY6dW8fpFiizJop8EjKBOYO4Qqiv.jpg);
+    background-position: center;
+    background-size: cover;
+}
