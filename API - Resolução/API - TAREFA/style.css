@@ -10,3 +10,34 @@ h1{
     margin: 50px;
 
 }
+input{
+    width: 50%;
+    margin-left: 40px;
+    padding: 10px;
+    font-size: x-large;
+    margin-bottom: 10px;
+}
+
+button{    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: x-large;
+}
+    
+.lugar{
+    border: 1px solid rgb(100, 100, 100);
+    height: auto;
+    margin-left: 40px;
+    width: 50%;
+    align-items: center;
+    padding: 10px;
+    font-size: x-large;
+
+}
+
+/* .informações{
+    display: flex;
+} */
