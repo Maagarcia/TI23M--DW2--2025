@@ -35,9 +35,10 @@ button{    padding: 10px 15px;
     align-items: center;
     padding: 10px;
     font-size: x-large;
+    background-color: white;
 
 }
-
-/* .informações{
+/* .container{
     display: flex;
 } */
+
