@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,21 +8,34 @@
     <link rel="stylesheet" href="./cookie.css">
     <script src="./cookie.js" defer></script>
 </head>
+
 <body>
     <div class="container">
-        <div id="contador">
-            <p>voce tem 0 cookies</p>
+        <div class="lugarcookie">
+            <div id="contador">
+                <p>voce tem 0 cookies</p>
+            </div>
+            <p id="cookiepersec"><span>cookies por segundo: 0</span></p>
+
+            <div class="icon-cookie">
+                <div class="cookie" onclick="clicar()"></div>
+            </div>
         </div>
-        <div class="cookie" onclick="clicar()">
+
+
+        <div class="lugar_comprados">
+            <div id="contadorcursor">quantidade de cursor: 0</div>
+
+            <div id="cursorcontainer">
+            </div>
         </div>
-        <div id="contadorcursor">quantidade de cursor: 0</div>
-        
-        <div id="cursorcontainer">
-            <div class="cursores"></div>
-        </div>
-        <div id="cursor">
-            <button id="cursor" onclick="cursortrue()">cursor</button>
+
+        <div class="lugartobuy">
+            <div id="cursor2">
+                <button id="cursor" onclick="cursortrue()">cursor</button>
+            </div>
         </div>
     </div>
 </body>
+
 </html>

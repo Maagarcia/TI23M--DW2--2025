@@ -5,13 +5,14 @@
     scroll-behavior: smooth;
 }
 .cookie{
-    width: 100px;
-    height: 100px;
+    width: 450px;
+    height: 450px;
     background-color: brown;
-    border: 1px black solid;
+    /* border: 1px black solid; */
     border-radius: 50%; 
-    background-image:url(https://static.wikia.nocookie.net/cookieclicker/images/5/5a/PerfectCookie.png/revision/latest?cb=20130827014912);
-    background-size: contain;
+    background-image:url(./imagens/sobremesa-com-lascas-de-chocolate-plana-lay_23-2149644641.avif);
+    background-size:cover;
+    background-position: center;
 }
 
 #cursor{
@@ -27,4 +28,36 @@
     background-image: url(./imagens/1000_F_596479011_4LAtyY6dW8fpFiizJop8EjKBOYO4Qqiv.jpg);
     background-position: center;
     background-size: cover;
+}
+#cursorcontainer{
+    display: flex;
+}
+
+.lugarcookie{
+    background-color: crimson;
+    padding:20px;
+    text-align: center;
+    
+    & .icon-cookie{
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        position: relative;
+        top: 150px;
+
+    }
+
+    & #contador{
+        margin-top: 50px;
+        font-size: xx-large;
+    }
+
+     & span{
+        font-size: small;
+    } 
+}
+
+.container{
+    display: flex;
+    justify-content: space-between;
 }

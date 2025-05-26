@@ -1,67 +1,71 @@
 let cookie = 0
-const cursor = document.getElementById('cursor')
-let qntcursor = 0
-let preçocursor = 10
 let lugarcursor = document.getElementById("cursorcontainer").innerHTML
+let cookiepersecond = 0
+let cursorinfo = {
+    custo: 10,
+    cookiesec: 0.1,
+    qntcursor: 0
+}
 
 function atualizarvalor(){
-
     if (cookie > 1){
-        document.getElementById('contador').innerHTML = `<p> voce tem ${(cookie)} cookies`
+        document.getElementById('contador').innerHTML = `<p> voce tem ${(Math.round(cookie))} cookies`
         
     }else if(cookie = 1){
-        document.getElementById('contador').innerHTML = `<p> voce tem ${(cookie)} cookie`
+        document.getElementById('contador').innerHTML = `<p> voce tem ${(Math.round(cookie))} cookie`
     
     }
 
 
-    if (qntcursor >= 1){
-        document.getElementById('contadorcursor').innerHTML = `<p>quantidade de cursor: ${qntcursor}</p>`
+    if (cursorinfo.qntcursor >= 1){
+        document.getElementById('contadorcursor').innerHTML = `<p>quantidade de cursor: ${cursorinfo.qntcursor}</p>`
+        document.getElementById('cookiepersec').innerHTML = `<p id="cookiepersec"><span>cookies por segundo: ${cookiepersecond.toFixed(1)} </span></p>`
     }
 }
 function clicar(){
     console.log(cookie)
-    cookie++
-    Math.floor(cookie)
-    // console.log(lugarcursor)
+    cookie = cookie +10
     atualizarvalor()
     verificar()
-    arredonda()
     
 } 
 
-function arredonda(){
-    cookie = Math.round(cookie)
-}
 
 function verificar(){
-    if(cookie < 10){
-        cursor.setAttribute('hidden','hidden')
-    }else if(cookie >= preçocursor){
-        cursor.removeAttribute('hidden')
+    let cursor = document.getElementById('cursor')
+    if(cookie >= cursorinfo.custo){
+        cursor.removeAttribute('disabled')
+    }else if(cookie < cursorinfo.custo){
+        cursor.setAttribute('disabled',true)
     }
 }
-
 function cursortrue(){
-    qntcursor++
-    cookie -= preçocursor
-    preçocursor += preçocursor*0.1
+    cookiepersecond += (cursorinfo.cookiesec)
+    cursorinfo.qntcursor++
+    cookie -= cursorinfo.custo
+    cursorinfo.custo += cursorinfo.custo*0.1
+    console.log(cookiepersecond)
     verificar()
     atualizarvalor()
-    if (qntcursor > 0){
-        console.log("oi")
-        console.log(qntcursor)
-        // let lugarcursor = document.getElementById("cursorcontainer").innerHTML
-        lugarcursor = lugarcursor + `<div class="cursores"></div>`
-        document.getElementById('cursorcontainer') = lugarcursor
-    }
-    arredonda()
+    if (cursorinfo.qntcursor > 0){
+        const cursores = document.getElementById("cursorcontainer")
+        const novocursor = document.createElement("div")
+
+        novocursor.className = 'cursores'
+        cursores.appendChild(novocursor)
 
 }
+}
 
-function teste(){
-    console.log('oi')
+function lucrocursor(){
+    
+      setInterval(() => {
+        cookie += (cookiepersecond/100);
+        atualizarvalor() 
+        verificar()
+    }, 10);
 }
 
 verificar()
-arredonda()
+lucrocursor()
+
