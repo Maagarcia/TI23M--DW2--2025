@@ -15,11 +15,6 @@
     background-position: center;
 }
 
-#cursor{
-    width: 100px;
-    height: 30px
-
-}
 
 .cursores {
     width: 100px;
@@ -29,14 +24,22 @@
     background-position: center;
     background-size: cover;
 }
-#cursorcontainer{
-    display: flex;
+
+.vovoses2{
+    width: 100px;
+    height: 100px;
+    /* background-color: rgb(34, 0, 255); */
+    background-image: url(./imagens/images.jpeg);
+    background-position: center;
+    background-size:contain;
+    background-repeat: no-repeat;
 }
 
 .lugarcookie{
     background-color: crimson;
     padding:20px;
     text-align: center;
+    width: 25%;
     
     & .icon-cookie{
         height: 100vh;
@@ -61,3 +64,68 @@
     display: flex;
     justify-content: space-between;
 }
+
+.lugar_comprados{
+    background-color: cornsilk;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+
+    & #cursorcontainer{
+    display: flex;
+    }
+    
+    & #vovocontainer{
+        display: flex;
+        
+    }
+
+    & #cursorcontainer{
+    display: flex;
+}
+}
+
+.lugartobuy{
+    height: 100vh;
+    width: 25%;
+    
+    & .construções{
+        display:flex;
+        flex-direction: column;
+        background-color: blue;
+        justify-content: center;
+        width: 100%;
+
+        & button{
+            display: flex;
+            background-color: aqua;
+            padding:25px;
+            width: 100%;
+            align-items: center;
+            font-size: x-large;
+            justify-content:space-between ;
+        }
+
+        & .containerbutton{
+            display: flex;
+            align-items: center;
+
+            & .nome-e-preco{
+                text-align: left;
+                
+            }
+
+            & span{
+                font-size: small
+            }
+        }
+    }
+
+    & .upgrades{
+        height: 375px;
+        background-color: green;
+
+    }
+
+}
+

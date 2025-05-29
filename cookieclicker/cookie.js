@@ -7,7 +7,17 @@ let cursorinfo = {
     qntcursor: 0
 }
 
+var vovoinfo = {
+    custo: 100,
+    cookiesec: 1,
+    qntvovo: 0,
+    verificavovo:false
+    
+}
+
 function atualizarvalor(){
+    document.getElementById("custovovo").innerHTML = `<p><span>${Math.round(vovoinfo.custo)}`
+    document.getElementById("custocursor").innerHTML = `<p><span>${Math.round(cursorinfo.custo)}`
     if (cookie > 1){
         document.getElementById('contador').innerHTML = `<p> voce tem ${(Math.round(cookie))} cookies`
         
@@ -18,13 +28,20 @@ function atualizarvalor(){
 
 
     if (cursorinfo.qntcursor >= 1){
-        document.getElementById('contadorcursor').innerHTML = `<p>quantidade de cursor: ${cursorinfo.qntcursor}</p>`
+        document.getElementById('contadorcursor').innerHTML = `${cursorinfo.qntcursor}`
+    }
+    
+    if (cookiepersecond > 0){
         document.getElementById('cookiepersec').innerHTML = `<p id="cookiepersec"><span>cookies por segundo: ${cookiepersecond.toFixed(1)} </span></p>`
+
+    }if (vovoinfo.qntvovo > 0){
+        document.getElementById('contadorvovo').innerHTML = `${vovoinfo.qntvovo}`
     }
 }
 function clicar(){
     console.log(cookie)
     cookie = cookie +10
+    console.log(vovoinfo.qntvovo)
     atualizarvalor()
     verificar()
     
@@ -33,10 +50,26 @@ function clicar(){
 
 function verificar(){
     let cursor = document.getElementById('cursor')
+    let vovo = document.getElementById('vovo')
+
     if(cookie >= cursorinfo.custo){
         cursor.removeAttribute('disabled')
-    }else if(cookie < cursorinfo.custo){
+    }else{
         cursor.setAttribute('disabled',true)
+    }
+    
+    if(cookie < (vovoinfo.custo - 50) && (vovoinfo.qntvovo === 0) && (vovoinfo.verificavovo === false)){
+        vovo.style.display = 'none'
+    } 
+    else{
+        vovo.style.display = 'flex'
+        vovoinfo.verificavovo = true
+        
+    }
+    if (cookie <=(vovoinfo.custo)){
+        vovo.setAttribute('disabled',true)
+    } else{
+        vovo.removeAttribute('disabled')
     }
 }
 function cursortrue(){
@@ -50,22 +83,43 @@ function cursortrue(){
     if (cursorinfo.qntcursor > 0){
         const cursores = document.getElementById("cursorcontainer")
         const novocursor = document.createElement("div")
-
+        
         novocursor.className = 'cursores'
         cursores.appendChild(novocursor)
-
-}
-}
-
-function lucrocursor(){
+        
+    }
     
-      setInterval(() => {
+    
+}
+
+function lucro(){
+    
+    setInterval(() => {
         cookie += (cookiepersecond/100);
         atualizarvalor() 
         verificar()
     }, 10);
 }
 
+function vovotrue(){
+    cookiepersecond += vovoinfo.cookiesec
+    vovoinfo.qntvovo = vovoinfo.qntvovo + 1
+    cookie -= vovoinfo.custo
+    vovoinfo.custo += (vovoinfo.custo * 0.1)
+    verificar()    
+    atualizarvalor()
+    console.log(vovoinfo.qntvovo)
+    if(vovoinfo.qntvovo > 0){
+        const vovoses = document.getElementById("vovocontainer")
+        const divovo = document.createElement('div')  
+        
+        divovo.className = 'vovoses2'
+        vovoses.appendChild(divovo)
+    
+    }
+}
+
 verificar()
-lucrocursor()
+
+lucro()
 
