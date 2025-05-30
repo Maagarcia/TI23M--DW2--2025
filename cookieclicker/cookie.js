@@ -5,6 +5,7 @@ let upgrades = {
     upgrademouse :{
         setappair: false,
         additional: cookiepersecond * 2,
+        custo:500,
 
     }
 }
@@ -19,7 +20,7 @@ let cursorinfo = {
 
 let vovoinfo = {
     custo: 100,
-    cookiesec: 1,
+    cookiesec: 25,
     qntvovo: 0,
     verificavovo:false
     
@@ -49,9 +50,9 @@ function atualizarvalor(){
     }
 }
 function clicar(){
-    console.log(cookie)
+    console.log(mouse.valorclique, ' isso é quanto voce ganha por clique')
     cookie += mouse.valorclique
-    console.log(vovoinfo.qntvovo)
+    console.log('isso é seu adicional caso vc compre o upgrade',upgrades.upgrademouse.additional)
     atualizarvalor()
     verificar()
     
@@ -140,8 +141,11 @@ function vovotrue(){
     }
 }
 
-function comprarupgrades(){
-    
+function buyupgrade(){
+    if(document.getElementsByName('upgrade1')){
+        cookie -= upgrades.upgrademouse.custo
+        mouse.valorclique += upgrades.upgrademouse.additional
+    }
 }
 
 verificar()
