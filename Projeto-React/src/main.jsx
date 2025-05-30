@@ -1,10 +1,13 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import App from './App.jsx'
+import Novo from './Novo.jsx'
+import Header from './Header.jsx'
+import Body from './Body.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App />
+    <Header/>
+    <Body />
   </StrictMode>,
 )

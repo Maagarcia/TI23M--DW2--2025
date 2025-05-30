@@ -1,16 +1,24 @@
 let cookie = 0
 let lugarcursor = document.getElementById("cursorcontainer").innerHTML
 let cookiepersecond = 0
-let upgrades = {
+var upgrades = {
     upgrademouse :{
-        setappair: false,
         additional: cookiepersecond * 2,
         custo:500,
-
+        setappair: false,
+        lugarhtml: document.getElementById('upgradeclick'),
+        
+    },
+    upgradegradma :{
+        additional: cookiepersecond * 2,
+        custo:1000,
+        setappair: false,
+        lugarhtml: document.getElementById('upgradevovo1'),
+        nomehtml: document.getElementsByName('upfradevovo1')
     }
 }
-let mouse = {
-    valorclique: 10
+var mouse = {
+    valorclique: 100
 }
 let cursorinfo = {
     custo: 10,
@@ -40,7 +48,7 @@ function atualizarvalor(){
 
     if (cursorinfo.qntcursor >= 1){
         document.getElementById('contadorcursor').innerHTML = `${cursorinfo.qntcursor}`
-    }
+    } 
     
     if (cookiepersecond > 0){
         document.getElementById('cookiepersec').innerHTML = `<p id="cookiepersec"><span>cookies por segundo: ${cookiepersecond.toFixed(1)} </span></p>`
@@ -52,7 +60,6 @@ function atualizarvalor(){
 function clicar(){
     console.log(mouse.valorclique, ' isso é quanto voce ganha por clique')
     cookie += mouse.valorclique
-    console.log('isso é seu adicional caso vc compre o upgrade',upgrades.upgrademouse.additional)
     atualizarvalor()
     verificar()
     
@@ -63,6 +70,7 @@ function verificar(){
     let cursor = document.getElementById('cursor')
     let vovo = document.getElementById('vovo')
     let upgradeclick = document.getElementById('upgradeclick')
+    let upgradevovo1 = document.getElementById('upgradevovo1')
 
     if(cookie >= cursorinfo.custo){
         cursor.removeAttribute('disabled')
@@ -83,15 +91,32 @@ function verificar(){
     } else{
         vovo.removeAttribute('disabled')
     }
-    if (cookie <= 250 && upgrades.upgrademouse.setappair === false){
-        upgradeclick.style.display = 'none'
-    } else{
-        upgradeclick.style.display = 'inline'
-        upgrades.upgrademouse = true
-    } if(cookie >= 500){
-        upgradeclick.removeAttribute('disabled')
-    } else{
-        upgradeclick.setAttribute('disabled', true)
+    if(document.getElementById('upgradeclick')){
+
+        if (cookie <= 250 && upgrades.upgrademouse.setappair === false){
+            upgradeclick.style.display = 'none'
+        } else{
+            upgradeclick.style.display = 'inline'
+            upgrades.upgrademouse.setappair = true
+        } if(cookie >= 500){
+            upgradeclick.removeAttribute('disabled')
+        } else{
+            upgradeclick.setAttribute('disabled', true)
+        }
+    }
+
+    if(upgrades.upgradegradma.lugarhtml){
+
+        if (cookie <= 750 && upgrades.upgradegradma.setappair === false){
+            upgrades.upgradegradma.lugarhtml.style.display = 'none'
+        }else{
+            upgrades.upgradegradma.lugarhtml.style.display = 'inline'
+            upgrades.upgradegradma.setappair = true
+        } if (cookie >= 1000){
+            upgradevovo1.removeAttribute('disabled')
+        } else{
+            upgrades.upgradegradma.lugarhtml.setAttribute('disabled',true)
+        }
     }
 }
 function cursortrue(){
@@ -142,9 +167,20 @@ function vovotrue(){
 }
 
 function buyupgrade(){
+    const lojaupgrades = document.getElementsByClassName('upgrades') 
     if(document.getElementsByName('upgrade1')){
+        const mouse1 = document.getElementById('upgradeclick')
+
+        mouse1.remove()
+        upgrades.upgrademouse.additional = cookiepersecond * 2
         cookie -= upgrades.upgrademouse.custo
         mouse.valorclique += upgrades.upgrademouse.additional
+    }
+    if(upgrades.upgradegradma.nomehtml){
+        const vovo1 = document.getElementById('upgradevovo1')
+
+        vovo1.remove()
+
     }
 }
 
