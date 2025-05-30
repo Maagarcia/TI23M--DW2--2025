@@ -1,13 +1,23 @@
 let cookie = 0
 let lugarcursor = document.getElementById("cursorcontainer").innerHTML
 let cookiepersecond = 0
+let upgrades = {
+    upgrademouse :{
+        setappair: false,
+        additional: cookiepersecond * 2,
+
+    }
+}
+let mouse = {
+    valorclique: 10
+}
 let cursorinfo = {
     custo: 10,
     cookiesec: 0.1,
     qntcursor: 0
 }
 
-var vovoinfo = {
+let vovoinfo = {
     custo: 100,
     cookiesec: 1,
     qntvovo: 0,
@@ -40,7 +50,7 @@ function atualizarvalor(){
 }
 function clicar(){
     console.log(cookie)
-    cookie = cookie +10
+    cookie += mouse.valorclique
     console.log(vovoinfo.qntvovo)
     atualizarvalor()
     verificar()
@@ -51,6 +61,7 @@ function clicar(){
 function verificar(){
     let cursor = document.getElementById('cursor')
     let vovo = document.getElementById('vovo')
+    let upgradeclick = document.getElementById('upgradeclick')
 
     if(cookie >= cursorinfo.custo){
         cursor.removeAttribute('disabled')
@@ -70,6 +81,16 @@ function verificar(){
         vovo.setAttribute('disabled',true)
     } else{
         vovo.removeAttribute('disabled')
+    }
+    if (cookie <= 250 && upgrades.upgrademouse.setappair === false){
+        upgradeclick.style.display = 'none'
+    } else{
+        upgradeclick.style.display = 'inline'
+        upgrades.upgrademouse = true
+    } if(cookie >= 500){
+        upgradeclick.removeAttribute('disabled')
+    } else{
+        upgradeclick.setAttribute('disabled', true)
     }
 }
 function cursortrue(){
@@ -117,6 +138,10 @@ function vovotrue(){
         vovoses.appendChild(divovo)
     
     }
+}
+
+function comprarupgrades(){
+    
 }
 
 verificar()

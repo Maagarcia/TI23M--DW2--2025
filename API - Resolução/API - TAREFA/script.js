@@ -20,6 +20,14 @@ function api(){
             document.getElementById("ano").value = infos.year;
             document.getElementById("paginas").value = infos.page_count;
             document.getElementById("sinopse2").textContent = infos.synopsis;
-})
+        })
     }
 
+function resetarinformacoes(){
+            document.getElementById("title").value = '';
+            document.getElementById("autor").value = '';
+            document.getElementById("publicadora").value = '';
+            document.getElementById("ano").value = '';
+            document.getElementById("paginas").value = '';
+            document.getElementById("sinopse2").textContent = 'sinopse';
+}

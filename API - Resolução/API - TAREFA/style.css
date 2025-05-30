@@ -1,8 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     scroll-behavior: smooth;
+    font-family: "Cinzel";
 }
 
 h1{
@@ -16,7 +21,11 @@ input{
     padding: 10px;
     font-size: x-large;
     margin-bottom: 10px;
+    color: black;
+    border: 1px black solid;
+
 }
+
 
 button{    padding: 10px 15px;
     background-color: #007bff;
@@ -26,9 +35,12 @@ button{    padding: 10px 15px;
     cursor: pointer;
     font-size: x-large;
 }
+button:hover{
+        background-color: #0059b7;
+}
     
 .lugar{
-    border: 1px solid rgb(100, 100, 100);
+    border: 1px solid rgb(0, 0, 0);
     height: auto;
     margin-left: 40px;
     width: 50%;
@@ -38,7 +50,12 @@ button{    padding: 10px 15px;
     background-color: white;
 
 }
-/* .container{
-    display: flex;
-} */
+#reset{
+    margin-left: 40px;
+    margin-top: 10px;
+}
+
+::-webkit-input-placeholder {
+   color: rgb(0, 0, 0);
+}
 
