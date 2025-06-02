@@ -1,13 +1,19 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import Novo from './Novo.jsx'
 import Header from './Header.jsx'
 import Body from './Body.jsx'
+import Footer from './Footer.jsx'
+import MainContent from './MainContent.jsx'
 
 createRoot(document.getElementById('root')).render(
+
+<div className='site'>
   <StrictMode>
     <Header/>
-    <Body />
-  </StrictMode>,
+    <MainContent/>
+    <Footer />
+  </StrictMode>
+</div>
+
 )
