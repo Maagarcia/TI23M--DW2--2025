@@ -166,9 +166,9 @@ function vovotrue(){
     }
 }
 
-function buyupgrade(){
+function buyupgrade(legal){
     const lojaupgrades = document.getElementsByClassName('upgrades') 
-    if(document.getElementsByName('upgrade1')){
+    if(legal.name == 'upgrade1'){
         const mouse1 = document.getElementById('upgradeclick')
 
         mouse1.remove()
@@ -176,7 +176,7 @@ function buyupgrade(){
         cookie -= upgrades.upgrademouse.custo
         mouse.valorclique += upgrades.upgrademouse.additional
     }
-    if(upgrades.upgradegradma.nomehtml){
+    if(legal.name =='upgradevovo1'){
         const vovo1 = document.getElementById('upgradevovo1')
 
         vovo1.remove()
