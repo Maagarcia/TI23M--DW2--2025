@@ -1,22 +1,5 @@
 let cookie = 0
 let lugarcursor = document.getElementById("cursorcontainer").innerHTML
-let cookiepersecond = 0
-var upgrades = {
-    upgrademouse :{
-        additional: cookiepersecond * 2,
-        custo:500,
-        setappair: false,
-        lugarhtml: document.getElementById('upgradeclick'),
-        
-    },
-    upgradegradma :{
-        additional: cookiepersecond * 2,
-        custo:1000,
-        setappair: false,
-        lugarhtml: document.getElementById('upgradevovo1'),
-        nomehtml: document.getElementsByName('upfradevovo1')
-    }
-}
 var mouse = {
     valorclique: 100
 }
@@ -32,6 +15,23 @@ let vovoinfo = {
     qntvovo: 0,
     verificavovo:false
     
+}
+let cookiepersecond = (cursorinfo.qntcursor*cursorinfo.cookiesec)+(vovoinfo.qntvovo * vovoinfo.cookiesec)
+var upgrades = {
+    upgrademouse :{
+        additional: cookiepersecond * 2,
+        custo:500,
+        setappair: false,
+        lugarhtml: document.getElementById('upgradeclick'),
+        
+    },
+    upgradegradma :{
+        additional: vovoinfo.cookiesec * 2,
+        custo:1000,
+        setappair: false,
+        lugarhtml: document.getElementById('upgradevovo'),
+        nomehtml: document.getElementsByName('upgradevovo1')
+    }
 }
 
 function atualizarvalor(){
@@ -113,7 +113,7 @@ function verificar(){
             upgrades.upgradegradma.lugarhtml.style.display = 'inline'
             upgrades.upgradegradma.setappair = true
         } if (cookie >= 1000){
-            upgradevovo1.removeAttribute('disabled')
+            upgrades.upgradegradma.lugarhtml.removeAttribute('disabled')
         } else{
             upgrades.upgradegradma.lugarhtml.setAttribute('disabled',true)
         }
@@ -168,7 +168,7 @@ function vovotrue(){
 
 function buyupgrade(legal){
     const lojaupgrades = document.getElementsByClassName('upgrades') 
-    if(legal.name == 'upgrade1'){
+    if(legal.name === 'upgrade1'){
         const mouse1 = document.getElementById('upgradeclick')
 
         mouse1.remove()
@@ -176,10 +176,17 @@ function buyupgrade(legal){
         cookie -= upgrades.upgrademouse.custo
         mouse.valorclique += upgrades.upgrademouse.additional
     }
-    if(legal.name =='upgradevovo1'){
-        const vovo1 = document.getElementById('upgradevovo1')
-
+    if(legal.name ==='upgradevovo1'){
+        const vovo1 = document.getElementById('upgradevovo')
+        cookie -= upgrades.upgradegradma.custo
+        vovoinfo.cookiesec = upgrades.upgradegradma.additional
+        cookiepersecond = (
+        cursorinfo.qntcursor * cursorinfo.cookiesec +
+        vovoinfo.qntvovo * vovoinfo.cookiesec
+    )
+        atualizarvalor()
         vovo1.remove()
+
 
     }
 }

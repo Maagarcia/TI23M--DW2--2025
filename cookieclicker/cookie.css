@@ -8,13 +8,24 @@
     width: 450px;
     height: 450px;
     background-color: brown;
-    /* border: 1px black solid; */
     border-radius: 50%; 
     background-image:url(./imagens/sobremesa-com-lascas-de-chocolate-plana-lay_23-2149644641.avif);
     background-size:cover;
     background-position: center;
+    transition: 0.1s;
 }
 
+.cookie:hover{
+    width: 465px;
+    height: 465px;
+    transition: 0.2s;
+    cursor:pointer;
+}
+
+.cookie:active{
+    width: 450px;
+    height: 450px;
+}
 
 .cursores {
     width: 100px;
@@ -36,7 +47,7 @@
 }
 
 .lugarcookie{
-    background-color: crimson;
+    background-color: rgb(20, 100, 220);
     padding:20px;
     text-align: center;
     width: 25%;
@@ -138,9 +149,12 @@
                 width: 75px;
                 height: 75px
             }
+        } & button:hover{
+            cursor: pointer;
+            
         }
 
-    }
+    } 
 
 }
 
