@@ -1,0 +1,15 @@
+button{
+    width: 100px;
+    margin-right: 5px ;
+    padding: 3px;
+    border-radius: 3px;
+}
+button:active{
+    background-color: rgb(56, 56, 56);
+
+}
+
+button:hover{
+    transition: 0.3s;
+    padding: 5px 5px;
+}

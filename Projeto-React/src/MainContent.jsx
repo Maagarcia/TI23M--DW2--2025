@@ -1,8 +1,9 @@
+import '../src/css/MainContent.css'
 import Section from "./Section"
 
 function MainContent (){
     return (
-        <main>
+        <main className="sessao">
             <Section title='Sobre nós'>
                 <p>Disciplina de Desenvolvimento Web 2</p>
             </Section>

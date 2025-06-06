@@ -6,12 +6,13 @@
 }
 
 .site{
-   min-height: 100vh;
   display: flex;
   flex-direction: column;
   color: rgb(255, 255, 255);
 }
 
 body{
-   background-color: black;
+  min-height: 100vh;
+  background-color: black;
 }
+

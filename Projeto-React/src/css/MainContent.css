@@ -1,0 +1,9 @@
+.sessao{
+    display: flex;
+    gap: 50px;
+    margin: 50px 30px;
+    border: 1px white solid;
+    text-align: center;
+    justify-content: center;
+
+}

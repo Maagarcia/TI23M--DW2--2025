@@ -1,19 +1,20 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import './index.css'
+import './css/index.css'
 import Header from './Header.jsx'
-import Body from './Body.jsx'
 import Footer from './Footer.jsx'
 import MainContent from './MainContent.jsx'
+import Contador from './Contador.jsx'
 
 createRoot(document.getElementById('root')).render(
 
-<div className='site'>
   <StrictMode>
+<div className='site'>
     <Header/>
     <MainContent/>
+    <Contador/>
     <Footer />
-  </StrictMode>
 </div>
+  </StrictMode>
 
 )
