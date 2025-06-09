@@ -5,6 +5,7 @@ import Header from './Header.jsx'
 import Footer from './Footer.jsx'
 import MainContent from './MainContent.jsx'
 import Contador from './Contador.jsx'
+import Tabela from './Tabela.jsx'
 
 createRoot(document.getElementById('root')).render(
 
@@ -14,6 +15,7 @@ createRoot(document.getElementById('root')).render(
     <MainContent/>
     <Contador/>
     <Footer />
+    <Tabela/>
 </div>
   </StrictMode>
 

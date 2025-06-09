@@ -33,8 +33,20 @@
         </div>
 
         <div class="lugartobuy">
+            <div id="janelaflutuante" class="infoupgrade" >
+                <div class="headerupgrade">
+                        <div class="container-header-upgrade">
+                            <img src="./imagens/cursor.png" alt="">
+                            <h3 id="title-upgrade">Mouse de plastico</h3>
+                        </div>  
+                        <div class="preco">custo</div>
+                </div>
+                <div class="bodyupgrade">
+                    ganha 10% do cps por click
+                </div>
+        </div>
             <div class="upgrades">
-                <button id="upgradeclick" disabled name="upgrade1" onclick="buyupgrade(this)"><img src="./imagens/cursor.png" alt=""></button> 
+                <button id="upgradeclick" disabled name="upgrade1" onclick="buyupgrade(this)"><img src="./imagens/cursor.png" alt="" onmouseenter="showupgrade()" onmouseout="showoutupgrade()"></button> 
                 <button id="upgradevovo" disabled name="upgradevovo1" onclick="buyupgrade(this)" ></button> 
                 <!-- <button><img src="./imagens/cursor.png" alt=""></button>  -->
                 <!-- <button><img src="./imagens/cursor.png" alt=""></button>  -->

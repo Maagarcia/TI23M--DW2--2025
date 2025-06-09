@@ -1,7 +1,7 @@
 let cookie = 0
 let lugarcursor = document.getElementById("cursorcontainer").innerHTML
 var mouse = {
-    valorclique: 100
+    valorclique: 100 ,
 }
 let cursorinfo = {
     custo: 10,
@@ -19,10 +19,10 @@ let vovoinfo = {
 let cookiepersecond = (cursorinfo.qntcursor*cursorinfo.cookiesec)+(vovoinfo.qntvovo * vovoinfo.cookiesec)
 var upgrades = {
     upgrademouse :{
-        additional: cookiepersecond * 2,
         custo:500,
         setappair: false,
         lugarhtml: document.getElementById('upgradeclick'),
+        setUpgradeTrue:false,
         
     },
     upgradegradma :{
@@ -58,8 +58,13 @@ function atualizarvalor(){
     }
 }
 function clicar(){
-    console.log(mouse.valorclique, ' isso é quanto voce ganha por clique')
-    cookie += mouse.valorclique
+    let lucroperclick = mouse.valorclique
+
+    if(upgrades.upgrademouse.setUpgradeTrue){
+        lucroperclick += cookiepersecond * 0.1
+    }
+    console.log(lucroperclick, ' isso é quanto voce ganha por clique')
+    cookie += lucroperclick
     atualizarvalor()
     verificar()
     
@@ -169,13 +174,16 @@ function vovotrue(){
 function buyupgrade(legal){
     const lojaupgrades = document.getElementsByClassName('upgrades') 
     if(legal.name === 'upgrade1'){
+        const janelaflutuante = document.getElementById('janelaflutuante')
         const mouse1 = document.getElementById('upgradeclick')
 
         mouse1.remove()
-        upgrades.upgrademouse.additional = cookiepersecond * 2
+        janelaflutuante.style.display = 'none'
         cookie -= upgrades.upgrademouse.custo
-        mouse.valorclique += upgrades.upgrademouse.additional
+        upgrades.upgrademouse.setUpgradeTrue = true
+
     }
+
     if(legal.name ==='upgradevovo1'){
         const vovo1 = document.getElementById('upgradevovo')
         cookie -= upgrades.upgradegradma.custo
@@ -189,6 +197,21 @@ function buyupgrade(legal){
 
 
     }
+}
+
+function showupgrade(){
+    const janelaflutuante = document.getElementById('janelaflutuante')
+    
+    // janelaflutuante.style.left = event.clientX + 'px'
+    // janelaflutuante.style.top = event.clientY +'px'
+    janelaflutuante.style.display = 'block'
+}
+
+function showoutupgrade(){
+    const janelaflutuante = document.getElementById('janelaflutuante')
+    // janelaflutuante.style.left = event.clientX + 'px'
+    // janelaflutuante.style.top = event.clientY +'px'
+    janelaflutuante.style.display = 'none' 
 }
 
 verificar()

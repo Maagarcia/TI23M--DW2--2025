@@ -1,0 +1,15 @@
+.tabela-container{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    border: 1px solid white;
+    margin: 50px 30px;
+    padding: 10px;
+
+
+    
+}
+.input-container{
+    display: flex;
+    gap: 10px;
+}

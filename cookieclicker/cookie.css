@@ -103,7 +103,6 @@
     & .construções{
         display:flex;
         flex-direction: column;
-        background-color: blue;
         justify-content: center;
         width: 100%;
 
@@ -155,6 +154,32 @@
         }
 
     } 
+    & .infoupgrade{
+        position: absolute;
+        top: 20px;
+        border: 1px black   solid;
+        right:  555px;
+        height: 150px;
+        width: 500px;
+        padding: 20px;
+        display: none;
+        background-color: white;
 
+        & .headerupgrade{
+            display: flex;
+            justify-content: space-between;
+
+            & img{
+                width: 75px;
+                height: 75px
+            }
+            & .container-header-upgrade{
+                display: flex;
+            }
+        }
+    } 
+        
 }
+
+
 
