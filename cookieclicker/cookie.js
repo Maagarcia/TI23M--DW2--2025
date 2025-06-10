@@ -23,6 +23,10 @@ var upgrades = {
         setappair: false,
         lugarhtml: document.getElementById('upgradeclick'),
         setUpgradeTrue:false,
+        infos:{
+            title: 'Mouse de Plastico',
+            description: 'Clicar te da 10% dos seus CpS'
+        },
         
     },
     upgradegradma :{
@@ -30,7 +34,12 @@ var upgrades = {
         custo:1000,
         setappair: false,
         lugarhtml: document.getElementById('upgradevovo'),
-        nomehtml: document.getElementsByName('upgradevovo1')
+        nomehtml: document.getElementsByName('upgradevovo1'),
+        infos:{
+            title:'Rolo de Massa',
+            description:'Vovós são duas vezes mais eficientes'
+        }
+
     }
 }
 
@@ -67,6 +76,8 @@ function clicar(){
     cookie += lucroperclick
     atualizarvalor()
     verificar()
+
+    
     
 } 
 
@@ -181,17 +192,18 @@ function buyupgrade(legal){
         janelaflutuante.style.display = 'none'
         cookie -= upgrades.upgrademouse.custo
         upgrades.upgrademouse.setUpgradeTrue = true
-
+        
     }
-
+    
     if(legal.name ==='upgradevovo1'){
         const vovo1 = document.getElementById('upgradevovo')
         cookie -= upgrades.upgradegradma.custo
         vovoinfo.cookiesec = upgrades.upgradegradma.additional
         cookiepersecond = (
-        cursorinfo.qntcursor * cursorinfo.cookiesec +
-        vovoinfo.qntvovo * vovoinfo.cookiesec
-    )
+            cursorinfo.qntcursor * cursorinfo.cookiesec +
+            vovoinfo.qntvovo * vovoinfo.cookiesec
+        )
+        janelaflutuante.style.display = 'none'
         atualizarvalor()
         vovo1.remove()
 
@@ -199,12 +211,29 @@ function buyupgrade(legal){
     }
 }
 
-function showupgrade(){
-    const janelaflutuante = document.getElementById('janelaflutuante')
-    
-    // janelaflutuante.style.left = event.clientX + 'px'
-    // janelaflutuante.style.top = event.clientY +'px'
-    janelaflutuante.style.display = 'block'
+function showupgrade(insano){
+    if(insano.name === "upgrade1"){
+        const janelaflutuante = document.getElementById('janelaflutuante')
+        
+        // janelaflutuante.style.left = event.clientX + 'px'
+        // janelaflutuante.style.top = event.clientY +'px'
+        janelaflutuante.style.display = 'block'
+        document.getElementById('title-upgrade').innerHTML = upgrades.upgrademouse.infos.title
+        document.getElementById("preco-upgrade").innerHTML = upgrades.upgrademouse.custo
+        document.getElementById("bodyupgrade").innerHTML = upgrades.upgrademouse.infos.description
+        document.getElementById('image-upgrade').src = './imagens/cursor.png'
+    }
+    if(insano.name ==='upgradevovo1'){
+        const janelaflutuante = document.getElementById('janelaflutuante')
+        
+        // janelaflutuante.style.left = event.clientX + 'px'
+        // janelaflutuante.style.top = event.clientY +'px'
+        janelaflutuante.style.display = 'block'
+        document.getElementById('title-upgrade').innerHTML = upgrades.upgradegradma.infos.title
+        document.getElementById("preco-upgrade").innerHTML = upgrades.upgradegradma.custo
+        document.getElementById("bodyupgrade").innerHTML = upgrades.upgradegradma.infos.description
+        document.getElementById('image-upgrade').src = './imagens/rolling-pin-clipart-hand-drawn-wooden-dough-rolling-pin-illustration_585376_wh860.png'
+    }
 }
 
 function showoutupgrade(){
