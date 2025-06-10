@@ -66,7 +66,7 @@ function atualizarvalor(){
         document.getElementById('contadorvovo').innerHTML = `${vovoinfo.qntvovo}`
     }
 }
-function clicar(){
+function clicar(event){
     let lucroperclick = mouse.valorclique
 
     if(upgrades.upgrademouse.setUpgradeTrue){
@@ -77,8 +77,9 @@ function clicar(){
     atualizarvalor()
     verificar()
 
-    
-    
+    if(event){
+        animacaotexto(lucroperclick,event.clientX, event.clientY)
+    }
 } 
 
 
@@ -243,7 +244,31 @@ function showoutupgrade(){
     janelaflutuante.style.display = 'none' 
 }
 
+function animacaotexto(valor,x,y){
+    const animation = document.createElement('div')
+    animation.className = 'texto-ganho'
+
+    animation.textContent = `+${valor.toFixed(1)}`
+
+    const container_animation = document.getElementById('animacao-ganho')
+
+    animation.style.left = (x - 70) + 'px' 
+
+    animation.style.top = (y - 310) + 'px'
+
+    container_animation.appendChild(animation)
+
+    setTimeout(() =>{
+
+        animation.remove()
+    },1000)
+
+}
+
+
 verificar()
 
 lucro()
+
+
 

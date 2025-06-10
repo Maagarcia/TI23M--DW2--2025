@@ -7,9 +7,9 @@
 .cookie{
     width: 450px;
     height: 450px;
-    background-color: brown;
+    background-color: rgb(255, 255, 255); 
     border-radius: 50%; 
-    background-image:url(./imagens/sobremesa-com-lascas-de-chocolate-plana-lay_23-2149644641.avif);
+    background-image:url(./imagens/sobremesa-com-lascas-de-chocolate-plana-lay_23-2149644641.avif); 
     background-size:cover;
     background-position: center;
     transition: 0.1s;
@@ -47,7 +47,7 @@
 }
 
 .lugarcookie{
-    background-color: rgb(20, 100, 220);
+    background-color: rgb(78, 13, 189);
     padding:20px;
     text-align: center;
     width: 25%;
@@ -164,6 +164,8 @@
         padding: 20px;
         display: none;
         background-color: white;
+        pointer-events: none;
+        user-select: none;
 
         & .headerupgrade{
             display: flex;
@@ -184,9 +186,13 @@
 }
 
 .texto-ganho{
-    color: blue;
+    color: rgb(255, 255, 255);
     position: absolute;
-    animation: floatUp 1s ease-out forwards;
+    animation: floatUp 1.5s ease-out forwards;
+    font-size: xx-large;
+    pointer-events: none;
+    user-select: none;
+    text-shadow: 1px 1px 1px black;
 
 }
 @keyframes floatUp{
@@ -198,11 +204,10 @@
 
     100%{
         opacity: 0;
-        transform: translateY(-50px);
+        transform: translateY(-100px);
 
     }
 }
-
 
 
 
