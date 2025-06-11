@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cookies Clicker</title>
     <link rel="stylesheet" href="./cookie.css">
+    <link rel="shortcut icon" href="/TI23M--DW2--2025/cookieclicker/imagens/images (1).jpeg" type="image/x-icon">
     <script src="./cookie.js" defer></script>
 </head>
 
@@ -21,8 +22,6 @@
                 <div class="cookie" onclick="clicar(event)">
                     <div id="animacao-ganho" ></div>
                 </div>
-
-
             </div>
         </div>
 
@@ -48,11 +47,27 @@
                         <button onclick="fecharestatistica()">x</button>
                     </div>
                 </div>
-                
+                <div class="body-infos">
+                    <div class="estatisticas">
+                        <h2>Geral</h2>
+                        <div id="info-cookie"></div>
+                        <div id="info-cookie-all"></div>
+                        <div id="info-cookie-persec"></div>
+                        <div id="info-cookie-perclick"></div>
+                        <div id="info-cliques"></div>
+                        <div id="info-cookie-caseiro"></div>
+                    </div>
+                    <div class="upgrades">
+                        <h2>Upgrades</h2>
+                        <div id="bag-upgrade"></div>
+                    </div>
+                </div>
+
             </div>
         </div>
 
         <div class="lugartobuy">
+            <div id="spend"></div>
             <div id="janelaflutuante" class="infoupgrade">
                 <div class="headerupgrade">
                     <div class="container-header-upgrade">
@@ -69,15 +84,15 @@
 
             </div>
             <div class="upgrades">
-                <button id="upgradeclick" disabled name="upgrade1" onclick="buyupgrade(this)"><img name="upgrade1" src="./imagens/cursor.png" alt="" onmouseenter="showupgrade(this)" onmouseout="showoutupgrade()"></button>
-                <button id="upgradevovo" disabled name="upgradevovo1" onclick="buyupgrade(this)"><img name="upgradevovo1" src="./imagens/090f197a-449c-47ef-acd4-73efdb43ba56.png" onmouseenter="showupgrade(this)" onmouseout="showoutupgrade()" alt=""></button>
+                <button id="upgradeclick" disabled name="upgrade1" onclick="buyupgrade(this, event)"><img name="upgrade1" src="./imagens/cursor.png" alt="" onmouseenter="showupgrade(this)" onmouseout="showoutupgrade()"></button>
+                <button id="upgradevovo" disabled name="upgradevovo1" onclick="buyupgrade(this, event)"><img name="upgradevovo1" src="./imagens/090f197a-449c-47ef-acd4-73efdb43ba56.png" onmouseenter="showupgrade(this)" onmouseout="showoutupgrade()" alt=""></button>
                 <!-- <button><img src="./imagens/cursor.png" alt=""></button>  -->
                 <!-- <button><img src="./imagens/cursor.png" alt=""></button>  -->
                 <!-- <button><img src="./imagens/cursor.png" alt=""></button>  -->
                 <!-- <button><img src="./imagens/cursor.png" alt=""></button>  -->
             </div>
             <div class="construções">
-                <button id="cursor" onclick="cursortrue()">
+                <button id="cursor" onclick="cursortrue(event)">
 
                     <div class="containerbutton">
                         <div class="cursores"></div>
@@ -90,7 +105,7 @@
                     <div id="contadorcursor">0</div>
                 </button>
 
-                <button id="vovo" onclick="vovotrue()">
+                <button id="vovo" onclick="vovotrue(event)">
 
 
                     <div class="containerbutton">

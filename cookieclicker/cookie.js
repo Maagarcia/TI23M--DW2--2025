@@ -1,7 +1,14 @@
 let cookie = 0
+let others = {
+    numero_cliques: 0,
+    numero_cookies_caseiros: 0,
+    numero_all_cookies: 0,
+
+}
 let lugarcursor = document.getElementById("cursorcontainer").innerHTML
 var mouse = {
     valorclique: 100 ,
+    info_valor_clique: 100
 }
 let cursorinfo = {
     custo: 10,
@@ -46,6 +53,13 @@ var upgrades = {
 function atualizarvalor(){
     document.getElementById("custovovo").innerHTML = `<p><span>${Math.round(vovoinfo.custo)}`
     document.getElementById("custocursor").innerHTML = `<p><span>${Math.round(cursorinfo.custo)}`
+    document.getElementById('info-cookie').innerHTML = `<p><span>Cookies no banco: ${cookie.toFixed(1)}`
+    document.getElementById('info-cookie-all').innerHTML = `<p><span>Cookies em toda ascensão: ${others.numero_all_cookies.toFixed(1)}`
+    document.getElementById('info-cookie-persec').innerHTML = `<p><span>Cookies por segundo: ${cookiepersecond.toFixed(1)}`
+    document.getElementById('info-cliques').innerHTML = `<p><span>Cliques em cookies: ${others.numero_cliques}`
+    document.getElementById('info-cookie-caseiro').innerHTML = `<p><span>Cookies caseiros: ${others.numero_cookies_caseiros.toFixed(1)}`
+    document.getElementById('info-cookie-perclick').innerHTML = `<p><span>Cookies caseiros por clique: ${mouse.info_valor_clique.toFixed(1)}`
+
     if (cookie > 1){
         document.getElementById('contador').innerHTML = `<p> voce tem ${(Math.round(cookie))} cookies`
         
@@ -65,6 +79,8 @@ function atualizarvalor(){
     }if (vovoinfo.qntvovo > 0){
         document.getElementById('contadorvovo').innerHTML = `${vovoinfo.qntvovo}`
     }
+
+    document.getElementById('infocookie')
 }
 function clicar(event){
     let lucroperclick = mouse.valorclique
@@ -74,12 +90,17 @@ function clicar(event){
     }
     console.log(lucroperclick, ' isso é quanto voce ganha por clique')
     cookie += lucroperclick
+    others.numero_cliques += 1
+    others.numero_all_cookies += lucroperclick
+    others.numero_cookies_caseiros += lucroperclick
     atualizarvalor()
     verificar()
+
 
     if(event){
         animacaotexto(lucroperclick,event.clientX, event.clientY)
     }
+    mouse.info_valor_clique = lucroperclick
 } 
 
 
@@ -136,7 +157,7 @@ function verificar(){
         }
     }
 }
-function cursortrue(){
+function cursortrue(event){
     cookiepersecond += (cursorinfo.cookiesec)
     cursorinfo.qntcursor++
     cookie -= cursorinfo.custo
@@ -153,19 +174,23 @@ function cursortrue(){
         
     }
     
+    if(event){
     
+            spend(cursorinfo.custo, event.clientX, event.clientY)
+        }
 }
 
 function lucro(){
     
     setInterval(() => {
         cookie += (cookiepersecond/100);
+        others.numero_all_cookies += (cookiepersecond/100)
         atualizarvalor() 
         verificar()
     }, 10);
 }
 
-function vovotrue(){
+function vovotrue(event){
     cookiepersecond += vovoinfo.cookiesec
     vovoinfo.qntvovo = vovoinfo.qntvovo + 1
     cookie -= vovoinfo.custo
@@ -173,27 +198,52 @@ function vovotrue(){
     verificar()    
     atualizarvalor()
     console.log(vovoinfo.qntvovo)
+    if(event){
+        console.log('event funcionando')
+        spend(vovoinfo.custo,event.clientX, event.clientY)
+    }
     if(vovoinfo.qntvovo > 0){
         const vovoses = document.getElementById("vovocontainer")
         const divovo = document.createElement('div')  
         
         divovo.className = 'vovoses2'
         vovoses.appendChild(divovo)
-    
+        
+        
     }
 }
 
-function buyupgrade(legal){
+function buyupgrade(legal,event){
     const lojaupgrades = document.getElementsByClassName('upgrades') 
     if(legal.name === 'upgrade1'){
         const janelaflutuante = document.getElementById('janelaflutuante')
         const mouse1 = document.getElementById('upgradeclick')
 
         mouse1.remove()
+        
+        const bolsa_upgrades = document.getElementById('bag-upgrade')
+        const increment_bag_upgrade = document.createElement('div')
+        const increment_bag_upgrade_image = document.createElement('img')
+
+
+        increment_bag_upgrade.className = 'default-upgrade'
+        increment_bag_upgrade_image.src = './imagens/cursor.png'
+
+        increment_bag_upgrade_image.setAttribute('onmouseenter', "showupgrade(this)")
+        increment_bag_upgrade_image.setAttribute('onmouseout', "showoutupgrade()")
+        increment_bag_upgrade_image.setAttribute('name','upgrade1')
+        
+        increment_bag_upgrade.appendChild(increment_bag_upgrade_image)
+
+        bolsa_upgrades.appendChild(increment_bag_upgrade)
+        
         janelaflutuante.style.display = 'none'
         cookie -= upgrades.upgrademouse.custo
         upgrades.upgrademouse.setUpgradeTrue = true
         
+        if(event){
+            spend(upgrades.upgrademouse.custo, event.clientX, event.clientY)
+        }
     }
     
     if(legal.name ==='upgradevovo1'){
@@ -207,6 +257,24 @@ function buyupgrade(legal){
         janelaflutuante.style.display = 'none'
         atualizarvalor()
         vovo1.remove()
+        
+        const bolsa_upgrades = document.getElementById('bag-upgrade')
+        const increment_bag_upgrade = document.createElement('div')
+        const increment_bag_upgrade_image = document.createElement('img')
+        
+        increment_bag_upgrade.className = 'default-upgrade'
+        increment_bag_upgrade_image.src = './imagens/090f197a-449c-47ef-acd4-73efdb43ba56.png'
+        increment_bag_upgrade_image.setAttribute('onmouseenter', "showupgrade(this)")
+        increment_bag_upgrade_image.setAttribute('onmouseout', "showoutupgrade()")
+        increment_bag_upgrade_image.setAttribute('name','upgradevovo1')
+        
+        increment_bag_upgrade.appendChild(increment_bag_upgrade_image)
+
+        bolsa_upgrades.appendChild(increment_bag_upgrade)
+
+                if(event){
+            spend(upgrades.upgradegradma.custo, event.clientX, event.clientY)
+        }
 
 
     }
@@ -245,6 +313,7 @@ function showoutupgrade(){
 }
 
 function animacaotexto(valor,x,y){
+    
     const animation = document.createElement('div')
     animation.className = 'texto-ganho'
 
@@ -259,7 +328,6 @@ function animacaotexto(valor,x,y){
     container_animation.appendChild(animation)
 
     setTimeout(() =>{
-
         animation.remove()
     },1000)
 
@@ -284,9 +352,27 @@ function fecharestatistica(){
 
 }
 
+function spend(custo, x, y){
+    const animation_perda_container = document.getElementById('spend')
+    const animation_perda = document.createElement('div')
+    
+    animation_perda_container.appendChild(animation_perda)
+
+    console.log('spend funcionando')
+
+    animation_perda.className ='texto-perda'
+    
+    animation_perda.textContent = `-${custo.toFixed()}`
+
+    animation_perda.style.left = (x) + 'px'
+    animation_perda.style.top = (y)+ 'px'
+
+    setTimeout(() =>{
+        animation_perda.remove()
+    },1000)
+
+}
+
 verificar()
 
 lucro()
-
-
-
