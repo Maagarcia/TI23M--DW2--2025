@@ -266,6 +266,24 @@ function animacaotexto(valor,x,y){
 }
 
 
+function showestatistica(){
+    const informacoes = document.getElementById('container-infos-id')
+    const cointainer_buyed = document.getElementById('container-comprados-id')
+
+    informacoes.style.display = 'flex'
+    cointainer_buyed.style.display = 'none'
+
+}
+
+function fecharestatistica(){
+    const informacoes = document.getElementById('container-infos-id')
+    const cointainer_buyed = document.getElementById('container-comprados-id')
+
+    informacoes.style.display = 'none'
+    cointainer_buyed.style.display = 'flex'
+
+}
+
 verificar()
 
 lucro()

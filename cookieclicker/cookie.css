@@ -53,7 +53,6 @@
     width: 25%;
     
     & .icon-cookie{
-        height: 100vh;
         display: flex;
         justify-content: center;
         position: relative;
@@ -77,23 +76,74 @@
 }
 
 .lugar_comprados{
-    background-color: cornsilk;
+    background-color: rgb(225, 209, 146);
     width: 50%;
     display: flex;
     flex-direction: column;
-
-    & #cursorcontainer{
-    display: flex;
-    }
+    height: 100vh;
     
-    & #vovocontainer{
-        display: flex;
-        
-    }
+    & .container-infos{
+        background-color: rgb(86, 86, 86);
+        height: auto;
+        display: none;
+        padding: 4px;
+        color: white;
+        flex-direction: column;
+        gap: 20px;
 
-    & #cursorcontainer{
-    display: flex;
+        & .cabecalio{
+            display:flex;
+            justify-content: space-between;
+            
+            & button{
+                width: 30px;
+                height: 30px;
+                border-radius: 50px;
+                border: 1px black solid;
+                box-shadow: -1px 1px 3px white;
+            }
+
+            & .title{
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+    }
+        
+    & .container-comprados{
+        background-color: aqua;
+        padding: 4px;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+
+            & #cursorcontainer{
+                display: flex;
+            }
+            
+            & #vovocontainer{
+                display: flex;
+            }
+    }
 }
+    & .botoes-infos{
+        padding: 7px;
+        height: 200px;
+        /* background-color:rebeccapurple ; */
+
+        & .estatisticas{
+            display: flex;
+            background-color: rgb(150, 11, 6);
+            height: 60px;
+            align-items: center;
+            user-select: none;
+            font-size: x-large;
+            color: white;
+            text-shadow: 1px 1px 7px white;
+
+        }
+
 }
 
 .lugartobuy{
