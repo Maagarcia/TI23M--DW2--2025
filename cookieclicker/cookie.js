@@ -23,6 +23,15 @@ let vovoinfo = {
     verificavovo:false
     
 }
+
+let fazendainfo = {
+    custo: 1000,
+    cookiesec:20,
+    qntfazenda:0,
+    verificafazenda: false,
+
+}
+
 let cookiepersecond = (cursorinfo.qntcursor*cursorinfo.cookiesec)+(vovoinfo.qntvovo * vovoinfo.cookiesec)
 var upgrades = {
     upgrademouse :{
@@ -53,6 +62,7 @@ var upgrades = {
 function atualizarvalor(){
     document.getElementById("custovovo").innerHTML = `<p><span>${Math.round(vovoinfo.custo)}`
     document.getElementById("custocursor").innerHTML = `<p><span>${Math.round(cursorinfo.custo)}`
+    document.getElementById("custofazenda").innerHTML = `<p><span>${Math.round(fazendainfo.custo)}`
     document.getElementById('info-cookie').innerHTML = `<p><span>Cookies no banco: ${cookie.toFixed(1)}`
     document.getElementById('info-cookie-all').innerHTML = `<p><span>Cookies em toda ascensão: ${others.numero_all_cookies.toFixed(1)}`
     document.getElementById('info-cookie-persec').innerHTML = `<p><span>Cookies por segundo: ${cookiepersecond.toFixed(1)}`
@@ -78,10 +88,11 @@ function atualizarvalor(){
 
     }if (vovoinfo.qntvovo > 0){
         document.getElementById('contadorvovo').innerHTML = `${vovoinfo.qntvovo}`
+    }if (fazendainfo.qntfazenda > 0){
+        document.getElementById('contadorfazenda').innerHTML = `${fazendainfo.qntfazenda}`
     }
-
-    document.getElementById('infocookie')
 }
+
 function clicar(event){
     let lucroperclick = mouse.valorclique
 
@@ -103,10 +114,10 @@ function clicar(event){
     mouse.info_valor_clique = lucroperclick
 } 
 
-
 function verificar(){
     let cursor = document.getElementById('cursor')
     let vovo = document.getElementById('vovo')
+    let fazenda = document.getElementById('fazenda')
     let upgradeclick = document.getElementById('upgradeclick')
     let upgradevovo1 = document.getElementById('upgradevovo1')
 
@@ -124,10 +135,22 @@ function verificar(){
         vovoinfo.verificavovo = true
         
     }
+    if(cookie <= (fazendainfo.custo -500) && fazendainfo.verificafazenda === false){
+        fazenda.style.display = 'none'
+    } else{
+        fazenda.style.display = 'flex'
+        fazendainfo.verificafazenda = true
+    }
     if (cookie <=(vovoinfo.custo)){
         vovo.setAttribute('disabled',true)
     } else{
         vovo.removeAttribute('disabled')
+    }
+    
+    if(cookie <=(fazendainfo.custo)){
+        fazenda.setAttribute('disabled',true)
+    } else{
+        fazenda.removeAttribute('disabled')
     }
     if(document.getElementById('upgradeclick')){
 
@@ -157,11 +180,11 @@ function verificar(){
         }
     }
 }
+
 function cursortrue(event){
     cookiepersecond += (cursorinfo.cookiesec)
     cursorinfo.qntcursor++
     cookie -= cursorinfo.custo
-    cursorinfo.custo += cursorinfo.custo*0.1
     console.log(cookiepersecond)
     verificar()
     atualizarvalor()
@@ -175,9 +198,10 @@ function cursortrue(event){
     }
     
     if(event){
-    
-            spend(cursorinfo.custo, event.clientX, event.clientY)
-        }
+        
+        spend(cursorinfo.custo, event.clientX, event.clientY)
+    }
+    cursorinfo.custo += cursorinfo.custo*0.1
 }
 
 function lucro(){
@@ -194,7 +218,6 @@ function vovotrue(event){
     cookiepersecond += vovoinfo.cookiesec
     vovoinfo.qntvovo = vovoinfo.qntvovo + 1
     cookie -= vovoinfo.custo
-    vovoinfo.custo += (vovoinfo.custo * 0.1)
     verificar()    
     atualizarvalor()
     console.log(vovoinfo.qntvovo)
@@ -202,6 +225,7 @@ function vovotrue(event){
         console.log('event funcionando')
         spend(vovoinfo.custo,event.clientX, event.clientY)
     }
+    vovoinfo.custo += (vovoinfo.custo * 0.1)
     if(vovoinfo.qntvovo > 0){
         const vovoses = document.getElementById("vovocontainer")
         const divovo = document.createElement('div')  
@@ -211,6 +235,24 @@ function vovotrue(event){
         
         
     }
+}
+
+function fazendatrue(event){
+    cookiepersecond += fazendainfo.cookiesec
+    fazendainfo.qntfazenda++
+    cookie -= fazendainfo.custo
+    
+    const fazenda_place = document.getElementById('fazendacontainer')
+    const difazenda = document.createElement('div')
+    
+    difazenda.className = 'fazendas'
+    
+    fazenda_place.appendChild(difazenda)
+    
+    if(event){
+        spend(fazendainfo.custo, event.clientX, event.clientY)
+    }
+    fazendainfo.custo += (fazendainfo.custo *0.1)
 }
 
 function buyupgrade(legal,event){
@@ -332,7 +374,6 @@ function animacaotexto(valor,x,y){
     },1000)
 
 }
-
 
 function showestatistica(){
     const informacoes = document.getElementById('container-infos-id')

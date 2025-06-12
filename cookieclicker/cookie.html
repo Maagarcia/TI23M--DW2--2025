@@ -20,11 +20,10 @@
 
             <div class="icon-cookie">
                 <div class="cookie" onclick="clicar(event)">
-                    <div id="animacao-ganho" ></div>
+                    <div id="animacao-ganho"></div>
                 </div>
             </div>
         </div>
-
 
         <div class="lugar_comprados">
             <div class="botoes-infos">
@@ -33,8 +32,10 @@
             <div class="container-comprados" id="container-comprados-id">
 
                 <div id="cursorcontainer"></div>
-                
+
                 <div id="vovocontainer"></div>
+
+                <div id="fazendacontainer"></div>
 
             </div>
 
@@ -62,7 +63,6 @@
                         <div id="bag-upgrade"></div>
                     </div>
                 </div>
-
             </div>
         </div>
 
@@ -84,8 +84,12 @@
 
             </div>
             <div class="upgrades">
-                <button id="upgradeclick" disabled name="upgrade1" onclick="buyupgrade(this, event)"><img name="upgrade1" src="./imagens/cursor.png" alt="" onmouseenter="showupgrade(this)" onmouseout="showoutupgrade()"></button>
-                <button id="upgradevovo" disabled name="upgradevovo1" onclick="buyupgrade(this, event)"><img name="upgradevovo1" src="./imagens/090f197a-449c-47ef-acd4-73efdb43ba56.png" onmouseenter="showupgrade(this)" onmouseout="showoutupgrade()" alt=""></button>
+                <button id="upgradeclick" disabled name="upgrade1" onclick="buyupgrade(this, event)"><img
+                        name="upgrade1" src="./imagens/cursor.png" alt="" onmouseenter="showupgrade(this)"
+                        onmouseout="showoutupgrade()"></button>
+                <button id="upgradevovo" disabled name="upgradevovo1" onclick="buyupgrade(this, event)"><img
+                        name="upgradevovo1" src="./imagens/090f197a-449c-47ef-acd4-73efdb43ba56.png"
+                        onmouseenter="showupgrade(this)" onmouseout="showoutupgrade()" alt=""></button>
                 <!-- <button><img src="./imagens/cursor.png" alt=""></button>  -->
                 <!-- <button><img src="./imagens/cursor.png" alt=""></button>  -->
                 <!-- <button><img src="./imagens/cursor.png" alt=""></button>  -->
@@ -106,19 +110,25 @@
                 </button>
 
                 <button id="vovo" onclick="vovotrue(event)">
-
-
                     <div class="containerbutton">
-
                         <div class="vovoses2"></div>
                         <div class="nome-e-preco">
                             <p>vovó</p>
                             <div id="custovovo"></div>
-
                         </div>
                     </div>
-
                     <div id="contadorvovo">0</div>
+                </button>
+                <button id="fazenda" onclick="fazendatrue(event)">
+                    <div class="containerbutton">
+
+                        <div class="fazendas"></div>
+                        <div class="nome-e-preco">
+                            <p>fazenda</p>
+                            <div id="custofazenda"></div>
+                        </div>
+                    </div>
+                    <div id="contadorfazenda">0</div>
                 </button>
             </div>
 

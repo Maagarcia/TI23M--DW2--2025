@@ -40,7 +40,17 @@
     width: 100px;
     height: 100px;
     /* background-color: rgb(34, 0, 255); */
-    background-image: url(./imagens/images.jpeg);
+    background-image: url(./imagens/Coragem_no_colo_de_Muriel.webp);
+    background-position: center;
+    background-size:contain;
+    background-repeat: no-repeat;
+}
+
+.fazendas{
+    width: 100px;
+    height: 100px;
+    /* background-color: rgb(34, 0, 255); */
+    background-image: url(./imagens/hayday-99.png.webp);
     background-position: center;
     background-size:contain;
     background-repeat: no-repeat;
@@ -130,6 +140,9 @@
             }
             
             & #vovocontainer{
+                display: flex;
+            }
+            & #fazendacontainer{
                 display: flex;
             }
     }
@@ -279,6 +292,7 @@
 
 .texto-perda{
     color: black;
+    text-shadow: 1px 1px 3px rgb(255, 255, 255);
     position: absolute;
     font-size: xx-large;
     animation: floatDown 1.5s ease-out forwards;
