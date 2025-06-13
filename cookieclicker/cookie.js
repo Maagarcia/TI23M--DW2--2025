@@ -53,9 +53,17 @@ var upgrades = {
         nomehtml: document.getElementsByName('upgradevovo1'),
         infos:{
             title:'Rolo de Massa',
-            description:'Vovós são duas vezes mais eficientes'
+            description:'Vovós são duas vezes mais eficientes',
         }
 
+    },
+    upgradefarm:{
+        custo: 5000,
+        setappair: false,
+        infos:{
+            title:'Foices de ferro',
+            description: 'Fazendas são duas vezes mais eficientes'
+        }
     }
 }
 
@@ -120,6 +128,7 @@ function verificar(){
     let fazenda = document.getElementById('fazenda')
     let upgradeclick = document.getElementById('upgradeclick')
     let upgradevovo1 = document.getElementById('upgradevovo1')
+    let upgradefazenda = document.getElementById('upgradefazenda')
 
     if(cookie >= cursorinfo.custo){
         cursor.removeAttribute('disabled')
@@ -177,6 +186,18 @@ function verificar(){
             upgrades.upgradegradma.lugarhtml.removeAttribute('disabled')
         } else{
             upgrades.upgradegradma.lugarhtml.setAttribute('disabled',true)
+        }
+    }
+    if (upgradefazenda){
+        if((cookie <= upgrades.upgradefarm.custo - 1000) && (upgrades.upgradefarm.setappair === false)){
+            upgradefazenda.style.display = 'none'
+        }else{
+            upgradefazenda.style.display = 'inline'
+            upgrades.upgradefarm.setappair = true
+        }if(cookie >= upgrades.upgradefarm.custo){
+            upgradefazenda.removeAttribute('disabled')
+        }else{
+            upgradefazenda.setAttribute('disabled',true)
         }
     }
 }
@@ -256,6 +277,7 @@ function fazendatrue(event){
 }
 
 function buyupgrade(legal,event){
+    console.log('teste')
     const lojaupgrades = document.getElementsByClassName('upgrades') 
     if(legal.name === 'upgrade1'){
         const janelaflutuante = document.getElementById('janelaflutuante')
@@ -320,6 +342,39 @@ function buyupgrade(legal,event){
 
 
     }
+    if(legal.name === 'upgradefazenda'){
+        console.log('teste')
+        const fazenda_remove = document.getElementById('upgradefazenda')
+        fazenda_remove.remove()
+        janelaflutuante.style.display = 'none'
+
+        cookie -= upgrades.upgradefarm.custo
+        fazendainfo.cookiesec *= 2
+
+        cookiepersecond =   (
+            cursorinfo.qntcursor * cursorinfo.cookiesec +
+            vovoinfo.qntvovo * vovoinfo.cookiesec + fazendainfo.qntfazenda*fazendainfo.cookiesec
+        )
+
+        if(event){
+            spend(upgrades.upgradefarm.custo, event.clientX, event.clientY)
+        }
+
+        const bolsa_upgrades = document.getElementById('bag-upgrade')
+        const increment_bag_upgrade = document.createElement('div')
+        const increment_bag_upgrade_image = document.createElement('img')
+        
+        increment_bag_upgrade.className = 'default-upgrade'
+        increment_bag_upgrade_image.src = './imagens/Foice com Cabo de Madeira.png'
+        increment_bag_upgrade_image.setAttribute('onmouseenter', "showupgrade(this)")
+        increment_bag_upgrade_image.setAttribute('onmouseout', "showoutupgrade()")
+        increment_bag_upgrade_image.setAttribute('name','upgradefazenda')
+        
+        increment_bag_upgrade.appendChild(increment_bag_upgrade_image)
+
+        bolsa_upgrades.appendChild(increment_bag_upgrade)
+
+    }
 }
 
 function showupgrade(insano){
@@ -343,7 +398,17 @@ function showupgrade(insano){
         document.getElementById('title-upgrade').innerHTML = upgrades.upgradegradma.infos.title
         document.getElementById("preco-upgrade").innerHTML = upgrades.upgradegradma.custo
         document.getElementById("bodyupgrade").innerHTML = upgrades.upgradegradma.infos.description
-        document.getElementById('image-upgrade').src = './imagens/rolling-pin-clipart-hand-drawn-wooden-dough-rolling-pin-illustration_585376_wh860.png'
+        document.getElementById('image-upgrade').src = './imagens/090f197a-449c-47ef-acd4-73efdb43ba56.png'
+    }
+    if(insano.name === 'upgradefazenda'){
+        const janelaflutuante = document.getElementById('janelaflutuante')
+
+        janelaflutuante.style.display = 'block'
+        document.getElementById('title-upgrade').innerHTML = upgrades.upgradefarm.infos.title
+        document.getElementById("preco-upgrade").innerHTML = upgrades.upgradefarm.custo
+        document.getElementById("bodyupgrade").innerHTML = upgrades.upgradefarm.infos.description
+        document.getElementById('image-upgrade').src = './imagens/Foice com Cabo de Madeira.png'
+
     }
 }
 
