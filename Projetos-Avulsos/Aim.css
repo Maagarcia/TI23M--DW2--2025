@@ -1,7 +1,7 @@
 * {
     padding: 0;
     margin: 0;
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
     scroll-behavior: smooth;
 
 }
@@ -28,8 +28,8 @@
 
 .iniciar{
     position: absolute;
-    top: 50%;
-    left: 50vw - 75;
+    top: 50vh ;
+    left: 50vw;
     user-select: none;
     cursor:crosshair;
     height: 45px;
@@ -50,8 +50,10 @@
     position:absolute;
     right: 0px;
     height: 100vh;
-    width: 20vw;
-    background-color: aqua;
+    width: 30vw;
+    background-color: rgb(216, 193, 161);
+    padding-left: 7px;
+   
 }
 
 .show-estatisticas{
@@ -67,3 +69,8 @@
     display: none;
 }
 
+.title-shot{
+    margin-bottom:5px ;
+    margin-top: 15px;
+    text-decoration:wavy;
+}
