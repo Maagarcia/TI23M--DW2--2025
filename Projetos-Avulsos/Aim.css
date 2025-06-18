@@ -1,0 +1,69 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+
+}
+
+.container{
+    height: 100vh;
+    background-color: rgb(227, 214, 196);
+    cursor:crosshair;
+    display:flex;
+    justify-content: center;
+    /* align-items: center; */
+    
+}
+
+.Coordenadas{
+    color: rgb(25, 39, 34);
+    position:absolute;
+    bottom: 180px;
+    left:   180px;
+    font-size: xx-large;
+    user-select: none;
+    
+}
+
+.iniciar{
+    position: absolute;
+    top: 50%;
+    left: 50vw - 75;
+    user-select: none;
+    cursor:crosshair;
+    height: 45px;
+    width: 75px;
+}
+
+.ph{
+    position: absolute;
+    height: 45px;
+    width: 75px;
+    background-color: yellow;
+    cursor:crosshair;
+    user-select: none;
+}
+
+.estatistica{
+    display: none;
+    position:absolute;
+    right: 0px;
+    height: 100vh;
+    width: 20vw;
+    background-color: aqua;
+}
+
+.show-estatisticas{
+    /* background-color: yellow; */
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    user-select: none;
+    cursor:crosshair;
+    height: auto;
+    width: auto;
+    padding: 3px;
+    display: none;
+}
+

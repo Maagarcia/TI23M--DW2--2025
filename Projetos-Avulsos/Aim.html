@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Mira</title>
+    <link rel="stylesheet" href="Aim.css">
+    <script src="./Aim.js" defer></script>
+</head>
+<body onmousemove="Coordenada()">
+    <div class="container" id="body-container">
+        <button id="show-estatisticas" class="show-estatisticas" onclick="show_estatistica()">mostrar estatisticas</button>
+        <div id="score" style="user-select: none;">Pontuação</div>
+        <button id="target" onclick="target()" class="iniciar">iniciar</button>
+        <div class="Coordenadas">
+            <div id="CoordenadaX">Coordenadas:</div>
+            <div id="CoordenadaY">Coordenadas:</div>
+        </div>
+        
+        <div id="estatisticas" class="estatistica">
+            <div id="coordenadas-marcadas"><button onclick="fecha_estatistica()" style="margin: 4px; width: 30px;">x</button></div>
+        </div>
+    </div>
+</body>
+</html>

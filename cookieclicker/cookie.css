@@ -223,7 +223,7 @@
 
     } 
     & .infoupgrade{
-        position: absolute;
+        position:absolute;
         top: 20px;
         border: 1px black   solid;
         right:  559px;

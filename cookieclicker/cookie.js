@@ -33,6 +33,7 @@ let fazendainfo = {
 }
 
 let cookiepersecond = (cursorinfo.qntcursor*cursorinfo.cookiesec)+(vovoinfo.qntvovo * vovoinfo.cookiesec)
+
 var upgrades = {
     upgrademouse :{
         custo:500,
@@ -285,7 +286,7 @@ function buyupgrade(legal,event){
 
         mouse1.remove()
         
-        const bolsa_upgrades = document.getElementById('bag-upgrade')
+        const cursor_upgrade_container = document.getElementById('cursores-upgrades-container')
         const increment_bag_upgrade = document.createElement('div')
         const increment_bag_upgrade_image = document.createElement('img')
 
@@ -299,7 +300,7 @@ function buyupgrade(legal,event){
         
         increment_bag_upgrade.appendChild(increment_bag_upgrade_image)
 
-        bolsa_upgrades.appendChild(increment_bag_upgrade)
+        cursor_upgrade_container.appendChild(increment_bag_upgrade)
         
         janelaflutuante.style.display = 'none'
         cookie -= upgrades.upgrademouse.custo
@@ -322,7 +323,7 @@ function buyupgrade(legal,event){
         atualizarvalor()
         vovo1.remove()
         
-        const bolsa_upgrades = document.getElementById('bag-upgrade')
+        const vovo_upgrade_container = document.getElementById('vovos-upgrades-container')
         const increment_bag_upgrade = document.createElement('div')
         const increment_bag_upgrade_image = document.createElement('img')
         
@@ -334,7 +335,7 @@ function buyupgrade(legal,event){
         
         increment_bag_upgrade.appendChild(increment_bag_upgrade_image)
 
-        bolsa_upgrades.appendChild(increment_bag_upgrade)
+        vovo_upgrade_container.appendChild(increment_bag_upgrade)
 
                 if(event){
             spend(upgrades.upgradegradma.custo, event.clientX, event.clientY)
@@ -360,7 +361,7 @@ function buyupgrade(legal,event){
             spend(upgrades.upgradefarm.custo, event.clientX, event.clientY)
         }
 
-        const bolsa_upgrades = document.getElementById('bag-upgrade')
+        const fazenda_upgrade_container = document.getElementById('fazenda-upgrade-container')
         const increment_bag_upgrade = document.createElement('div')
         const increment_bag_upgrade_image = document.createElement('img')
         
@@ -372,7 +373,7 @@ function buyupgrade(legal,event){
         
         increment_bag_upgrade.appendChild(increment_bag_upgrade_image)
 
-        bolsa_upgrades.appendChild(increment_bag_upgrade)
+        fazenda_upgrade_container.appendChild(increment_bag_upgrade)
 
     }
 }
@@ -382,7 +383,7 @@ function showupgrade(insano){
         const janelaflutuante = document.getElementById('janelaflutuante')
         
         // janelaflutuante.style.left = event.clientX + 'px'
-        // janelaflutuante.style.top = event.clientY +'px'
+        // janelaflutuante.style.top = event.clientY + 'px'
         janelaflutuante.style.display = 'block'
         document.getElementById('title-upgrade').innerHTML = upgrades.upgrademouse.infos.title
         document.getElementById("preco-upgrade").innerHTML = upgrades.upgrademouse.custo
@@ -403,6 +404,8 @@ function showupgrade(insano){
     if(insano.name === 'upgradefazenda'){
         const janelaflutuante = document.getElementById('janelaflutuante')
 
+        // janelaflutuante.style.left = (event.clientX -565) + 'px'
+        // janelaflutuante.style.top = (event.clientY -  75)+'px'
         janelaflutuante.style.display = 'block'
         document.getElementById('title-upgrade').innerHTML = upgrades.upgradefarm.infos.title
         document.getElementById("preco-upgrade").innerHTML = upgrades.upgradefarm.custo
