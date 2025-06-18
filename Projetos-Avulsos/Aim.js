@@ -9,6 +9,21 @@ function Coordenada(){
     document.getElementById('CoordenadaY').innerHTML = `Coordenada Y:${event.clientY}`
 }
 
+function contagem(){
+    let tempo = 3
+
+    if(tempo > 0){
+        setInterval(()=>{
+            document.getElementById('contador').textContent = `${tempo}...`
+            tempo -=1
+        },1000)
+    }
+    else{
+        target()
+    }
+    console.log('teste')
+}
+
 function target(){
     num_testes +=1
     console.log('numteste', num_testes)
@@ -60,7 +75,7 @@ function target(){
         codY=[]
         end_game()
     
-    },5000)
+    },500)
     
 }
 

@@ -11,7 +11,8 @@
     <div class="container" id="body-container">
         <button id="show-estatisticas" class="show-estatisticas" onclick="show_estatistica()">mostrar estatisticas</button>
         <div id="score" style="user-select: none;">Pontuação</div>
-        <button id="target" onclick="target()" class="iniciar">iniciar</button>
+        <button id="target" onclick="contagem()" class="iniciar">iniciar</button>
+        <h1 style="position: absolute; top: 45vh ;left: 50vw - 75;" id="contador">3...</h1>
         <div class="Coordenadas">
             <div id="CoordenadaX">Coordenadas X:0</div>
             <div id="CoordenadaY">Coordenadas Y:0</div>
@@ -19,7 +20,9 @@
         
         <div id="estatisticas" class="estatistica">
             <div id="coordenadas-marcadas">
-                <button onclick="fecha_estatistica()" style="margin: 4px; width: 30px;">x</button>
+                <div class="header" style="display: flex; justify-content: end;">
+                    <button onclick="fecha_estatistica()" style="margin: 4px; width: 30px; position:fixed;">x</button>
+                </div>
             
             </div>
         </div>

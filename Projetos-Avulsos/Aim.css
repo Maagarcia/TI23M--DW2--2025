@@ -2,7 +2,7 @@
     padding: 0;
     margin: 0;
     /* box-sizing: border-box; */
-    scroll-behavior: smooth;
+    /* scroll-behavior: smooth; */
 
 }
 
@@ -29,7 +29,7 @@
 .iniciar{
     position: absolute;
     top: 50vh ;
-    left: 50vw;
+    left: 50vw - 75;
     user-select: none;
     cursor:crosshair;
     height: 45px;
@@ -53,7 +53,7 @@
     width: 30vw;
     background-color: rgb(216, 193, 161);
     padding-left: 7px;
-   
+    overflow-y: auto;
 }
 
 .show-estatisticas{
