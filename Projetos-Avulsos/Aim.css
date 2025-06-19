@@ -29,7 +29,7 @@
 .iniciar{
     position: absolute;
     top: 50vh ;
-    left: 50vw - 75;
+    left: 55vw;
     user-select: none;
     cursor:crosshair;
     height: 45px;
@@ -73,4 +73,14 @@
     margin-bottom:5px ;
     margin-top: 15px;
     text-decoration:wavy;
+}
+
+.treino_valorant{
+    position: absolute;
+    top: 50vh ;
+    left: 40vw;
+    user-select: none;
+    cursor:crosshair;
+    height: 45px;
+    width: 75px;
 }

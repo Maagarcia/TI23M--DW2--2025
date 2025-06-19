@@ -5,14 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projeto Mira</title>
     <link rel="stylesheet" href="Aim.css">
+    <link rel="icon" href="./imagem/shooter.png">
     <script src="./Aim.js" defer></script>
 </head>
 <body onmousemove="Coordenada()">
     <div class="container" id="body-container">
         <button id="show-estatisticas" class="show-estatisticas" onclick="show_estatistica()">mostrar estatisticas</button>
         <div id="score" style="user-select: none;">Pontuação</div>
-        <button id="target" onclick="contagem()" class="iniciar">iniciar</button>
-        <h1 style="position: absolute; top: 45vh ;left: 50vw - 75;" id="contador">3...</h1>
+        <button id="target" onclick="contagem(this)" class="iniciar" name="treino-normal">iniciar</button>
+        <button id="target_valorant" onclick="contagem(this)" class="treino_valorant" name="treino-valorant">Treino Valorant</button>
+        <h1 style="position: absolute; top: 45vh ;left: 50vw - 75;display: none;" id="contador"></h1>
         <div class="Coordenadas">
             <div id="CoordenadaX">Coordenadas X:0</div>
             <div id="CoordenadaY">Coordenadas Y:0</div>
