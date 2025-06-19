@@ -77,6 +77,7 @@ function target(){
     alvo.style.left = `${parseInt(Math.random() * 1000)}px`
     setTimeout(()=>{
         document.getElementById('target').style.display = 'block'
+        document.getElementById('target_valorant').style.display = 'block'
         showestatistica.style.display = 'flex'
         alvo.style.top =` 354px;`
         alvo.style.left = '654px;'
@@ -180,6 +181,7 @@ function treino_valorant(){
             
                 if(num_alvos >= 10){
                     clearInterval(game_valorant)
+                    score = 0
                      document.getElementById('target').style.display = 'block'
                      document.getElementById('target_valorant').style.display = 'block'
                 }
