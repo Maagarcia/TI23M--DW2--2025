@@ -12,6 +12,10 @@ function Coordenada(){
 }
 
 function contagem(nome){
+    score = 0
+    document.getElementById('score').textContent = `Pontuação: ${score}`
+    document.getElementById('show-estatisticas').style.display = 'none'
+    document.getElementById('estatisticas').style.display = 'none'
     if(nome.name === "treino-normal"){
         document.getElementById('target').style.display = 'none'
         document.getElementById('target_valorant').style.display = 'none'
@@ -54,15 +58,11 @@ function contagem(nome){
     }
 }
 
-
-
 function target(){
     num_testes +=1
     console.log('numteste', num_testes)
     const alvo = document.createElement('button')
-    const showestatistica = document.getElementById('show-estatisticas')
-    showestatistica.style.display = 'none'
-    document.getElementById('estatisticas').style.display = 'none'
+    
     
     
     alvo.setAttribute('id',true)
@@ -71,6 +71,7 @@ function target(){
     alvo.classList = 'ph'
     alvo.setAttribute('onclick', 'game()')
     const body_container = document.getElementById("body-container")
+    const showestatistica = document.getElementById('show-estatisticas')
     
     body_container.appendChild(alvo)
     alvo.style.top = `${parseInt(Math.random() * 700)}px`
@@ -129,13 +130,13 @@ function valorant_alvo(){
     // num_alvos +=1
     document.getElementById('mosca').remove()
     console.log('esse é o numero de alvos atirados',score)
+    codX.push(event.clientX)
+    codY.push(event.clientY)
     document.getElementById('score').textContent = `Pontuação: ${score}`
 
 }
 
 function end_game(){
-    score = 0
-    document.getElementById('score').textContent = `Pontuação:${score}`
     let new_mosca = document.getElementById('mosca')
     new_mosca.remove()
 
@@ -179,14 +180,39 @@ function treino_valorant(){
                 console.log('esse é o numero de alvos passados',num_alvos)
                 alvo.remove()
             
-                if(num_alvos >= 10){
+                if(num_alvos >= 5){
                     clearInterval(game_valorant)
+                    end_game_valorant()
                     score = 0
                      document.getElementById('target').style.display = 'block'
                      document.getElementById('target_valorant').style.display = 'block'
                 }
         }, 1000);
-    }, 1500);
 
-    // for(i=)
+    }, 1500);
+    
+}
+
+function end_game_valorant(){
+        var estatistica_valorant = document.getElementById('show-estatisticas')
+        estatistica_valorant.style.display = 'block'
+        var coordenadas_marcadas =  document.getElementById('coordenadas-marcadas')
+        var num_testes_container = document.createElement('div')
+        var title_shot = document.createElement('h1')
+        title_shot.className = 'title-shot'
+        title_shot.textContent = `Teste de Valorant ${num_testes}`
+        
+        coordenadas_marcadas.appendChild(title_shot)
+    for (i=0; i < score;i++){
+            codExato = [codX[i],codY[i]]
+            console.log(`tiro ${i+1} foi dado em (${codExato})`)
+            var estatistica_shot = document.createElement('div')
+            estatistica_shot.textContent = (`tiro ${i+1} foi dado em (${codExato})`)
+            
+            num_testes_container.appendChild(estatistica_shot)
+            coordenadas_marcadas.appendChild(num_testes_container)
+    }
+    codExato = []
+    codX = []
+    codY = []
 }
