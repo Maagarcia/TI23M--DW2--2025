@@ -1,0 +1,37 @@
+.todo{
+    border: 1px black solid;
+    width: 1000px;
+    padding-right: 40px;
+    border-radius: 8px;
+
+}
+
+.Item{
+    display:flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    
+
+    & button{
+        height: 45px;
+        cursor: pointer;
+    }
+
+    .buttons{
+        display: flex;
+        gap: 4px;
+    }
+
+    & .text{
+        color: rgb(96, 3, 3);
+    }
+    & .category{
+        color: rgb(2, 81, 2);
+    }
+}
+
+.app{
+    display: flex;
+    justify-content: center;
+}

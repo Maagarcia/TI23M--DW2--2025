@@ -2,14 +2,15 @@ let clicadas = 0
 
 
 
-let insultos = ['Espera... você fez...', 'Não, espera, tipo, POR QUE???',"O nome do site já não é altoexplicativo??","Não, sério o que que deu em você???",'Qual o seu problema irmao??','Por um acaso você sabe a trampeira que foi fazer tudo isso pra voce vir aqui e simplesmente clicar no botão?','PARA DE CLICAR NO BOTÃO E ME ESCUTA', 'GRRRRRRRRRRRRRRR', 'FAZ ISSO MAIS UMA VEZ PRA VOCÊ VE','beleza voce que pediu','Ce ta me zoando né?', 'Tenta agora bundao kk','NÃO ','Quer saber? Vai mais uma ce voce for o fodão agr','DU-VI-DO VOCE CONSEGUIR AGORA','Cê é engraçado hein zé','O que voce ganha em testar a minha paciencia?','VOCÊ NÃO TEM UMA LOUÇA PRA LAVA NÃO?', 'Ta ok... liga ai hehehehehhehe',"AH PARA NEH",'Por que que voce é tão persistente em me irritar???','faz assim então...caso voce toque na parede, TUDO AQUI VAI SER RESETADO, O SITE INTEIRO']
+let insultos = ['Espera... você fez...', 'Não, espera, tipo, POR QUE???',"O nome do site já não é altoexplicativo??","Não, sério o que que deu em você???",'Qual o seu problema irmao??','Por um acaso você sabe a trampeira que foi fazer tudo isso pra voce vir aqui e simplesmente clicar no botão?','PARA DE CLICAR NO BOTÃO E ME ESCUTA', 'GRRRRRRRRRRRRRRR', 'FAZ ISSO MAIS UMA VEZ PRA VOCÊ VE','beleza voce que pediu','Ce ta me zoando né?', 'Tenta agora bundao kk','NÃO ','Quer saber? Vai mais uma ce voce for o fodão agr','DU-VI-DO VOCE CONSEGUIR AGORA','Cê é engraçado hein zé','O que voce ganha em testar a minha paciencia?','VOCÊ NÃO TEM UMA LOUÇA PRA LAVA NÃO?', 'Ta ok... liga ai hehehehehhehe',"AH PARA NEH",'Por que que voce é tão persistente em me irritar???','faz assim então...caso voce toque na parede, TUDO AQUI VAI SER RESETADO, O SITE INTEIRO',"beleza então espertinho",'usa teu botão direito do mouse agora']
 let mensagem = document.getElementById('mensagem')
 let botao = document.getElementById('botao')
 let position = 0
 
 function teste(){
+
     
-    mensagem.textContent = ''
+    // mensagem.textContent = ''
     clicadas++
     console.log(clicadas)
 
@@ -109,6 +110,11 @@ function teste(){
         area.setAttribute('onmouseover','fuga()')
     }
     if(clicadas === 20){
+
+        let titulo = document.getElementById('title')
+
+        titulo.innerHTML = `<h1>Não aperte o Botão</h1>`
+
         fuga_settimeout = true
         progression(position)
         position ++ 
@@ -136,8 +142,39 @@ function teste(){
             container.appendChild(danger)
 
         }
+        if(clicadas === 23){
+            progression(position)
+            position++
 
-    
+            danger.style.top = '200px'
+            danger.style.width = '100vw'
+            danger.style.height = '100px'
+            botao.style.top ='30px'
+            danger.style.right = '0px'
+
+        }if(clicadas === 24){
+            progression(position)
+            position++
+            const barreira1 = document.createElement('div')
+            barreira1.className = 'danger'
+            barreira1.id = 'barreira1'
+            barreira1.setAttribute('onmouseover','reset()')
+            barreira1.style.width = '100vw'
+            barreira1.style.height = '100px'
+            barreira1.style.top = '500px'
+            barreira1.style.right = '0px'
+            container.appendChild(barreira1)
+
+            botao.style.top = '350px'
+            botao.style.left = '50%'
+
+            window.addEventListener("contextmenu", function(e){
+  e.preventDefault();
+}, false);
+        
+        }
+
+   
     
 }
 
@@ -168,6 +205,7 @@ function progression(x){
 fuga_verification = false
 fuga_bigger_than_700 = false
 fuga_settimeout = false
+
 function fuga(){
     
     console.log('teste')
@@ -221,6 +259,7 @@ function reset(){
 
     mensagem.style.position = 'absolute'
     mensagem.style.left = '1000px'
+    location.reload(true)
 
     mensagem.textContent = 'Ola! Bem vindo e aproveite do site onde voce não pode apertar o botão'
     // teste()

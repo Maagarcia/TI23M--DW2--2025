@@ -1,0 +1,21 @@
+.forms{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    width: 900px;
+}
+.all{
+    display: flex;
+    gap: 3px;
+    justify-content: space-between;
+
+    & .adition{
+           width: 60px;
+           transition: 0.5s;
+           font-size: x-large;
+        }
+
+        & .adition:hover{
+            width: 65px;
+        }
+}
