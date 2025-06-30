@@ -6,8 +6,8 @@ const TodoItem = ({ todo ,  removeTodo , completeTodo}) => {
         <div>
             {todo.map((todo_item) => (
                 <li key={todo_item.id}className="Item" >
-                    <div className="content" style={{textDecoration: todo_item.isCompleted? "line-through" : '' }}>
-                        <p className="text">{todo_item.text}</p>
+                    <div className="content">
+                        <p className="text" style={{textDecoration: todo_item.isCompleted? "line-through" : '' }}>{todo_item.text}</p>
                         <p className="category">{todo_item.category}</p>
                     </div>
                     <div className="buttons">
