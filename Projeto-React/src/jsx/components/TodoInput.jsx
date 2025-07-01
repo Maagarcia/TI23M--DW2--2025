@@ -29,8 +29,8 @@ const TodoInput = ({addTodo}) => {
             <input type="text" value={title} placeholder='Digite o titulo' onChange={(e) =>setTitle(e.target.value)}/>
             <select onChange={(e) => setCategory(e.target.value)} value={category}>
                 <option value="">selecione uma categoria</option>
-                <option value="Trabalho">Trabalho</option>
-                <option value="Pessoal">Pessoal</option>
+                <option value="Fix">Fixo</option>
+                <option value="Variable">Variado</option>
             </select>
         </div>
         <button className='adition'>+</button>

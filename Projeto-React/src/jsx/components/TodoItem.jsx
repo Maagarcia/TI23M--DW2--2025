@@ -1,23 +1,20 @@
 import React from 'react'
 
-
-const TodoItem = ({ todo ,  removeTodo , completeTodo}) => {
-    return (
-        <div>
-            {todo.map((todo_item) => (
-                <li key={todo_item.id}className="Item" >
-                    <div className="content">
-                        <p className="text" style={{textDecoration: todo_item.isCompleted? "line-through" : '' }}>{todo_item.text}</p>
-                        <p className="category">{todo_item.category}</p>
-                    </div>
-                    <div className="buttons">
-                        <button onClick={() => completeTodo(todo_item.id)}>Complete</button>
-                        <button onClick={()=> removeTodo(todo_item.id)}>Remove</button>
-                    </div>
-                </li>
-            ))}
-        </div>
-    )
+const TodoItem = ({ todo, removeTodo, completeTodo }) => {
+  return (
+    <li className="Item">
+      <div className="content">
+        <p className="text" style={{ textDecoration: todo.isCompleted ? "line-through" : '' }}>
+          {todo.text}
+        </p>
+        <p className="category">{todo.category}</p>
+      </div>
+      <div className="buttons">
+        <button onClick={() => completeTodo(todo.id)}>Complete</button>
+        <button onClick={() => removeTodo(todo.id)}>Remove</button>
+      </div>
+    </li>
+  )
 }
 
 export default TodoItem
