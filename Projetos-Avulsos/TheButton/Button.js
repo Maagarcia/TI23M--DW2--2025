@@ -7,8 +7,17 @@ let mensagem = document.getElementById('mensagem')
 let botao = document.getElementById('botao')
 let position = 0
 
+let reset_verification = false
+
 function teste(){
 
+    if(reset_verification === true && clicadas === 0){
+        let texto = 'espera...voce denovo??'
+        let tempo = 15
+
+        writtermachine(texto,tempo)
+        
+    }
     
     // mensagem.textContent = ''
     clicadas++
@@ -259,7 +268,8 @@ function reset(){
 
     mensagem.style.position = 'absolute'
     mensagem.style.left = '1000px'
-    location.reload(true)
+    // location.reload(true)
+    reset_verification = true
 
     mensagem.textContent = 'Ola! Bem vindo e aproveite do site onde voce não pode apertar o botão'
     // teste()

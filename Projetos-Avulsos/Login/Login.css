@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+.container{
+    display: flex;
+    height: 100vh;
+    /* background-color: tomato; */
+}
+
+.container-place{
+    display: flex;
+    width:  45vw;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(240deg, rgba(2, 0, 33, 1) 22%, rgba(9, 41, 121, 1) 61%, rgb(25, 48, 93) 100%);
+}
+
+
+.box{
+    border: 1px solid black;
+    height: fit-content;
+    width: 500px;
+    background-color:white;
+    padding: 50px;
+    border-radius: 10px;
+    
+    
+    h1{
+        text-align: center;
+        font-family: "Raleway", sans-serif;
+    }
+
+    form{
+        margin-top:30px ;
+        display: flex;
+        flex-direction: column;
+        font-family: "Raleway", sans-serif;
+    }
+
+    input{
+        margin-bottom: 30px;
+        border-radius: 3px;
+    }
+
+    .botao{
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+    }
+
+    button{
+        padding: 8px;
+        width: 150px;
+        font-size: x-large;
+        border-radius: 80px;
+        font-family: "Raleway", sans-serif;
+    }
+}
+
+
+.background-foto{
+    background-image: url(./stock-photo-artificial-intelligence-futuristic-innovative-machine-learning-technology-d-illustration-2610001477.jpg);
+    width: 60vw;
+    background-position: center;
+    background-size: 1300px;
+}
