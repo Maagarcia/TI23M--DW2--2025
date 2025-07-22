@@ -2,17 +2,30 @@ teste()
 
 let container_writter = document.getElementById('pog')
 let answer = document.getElementById('answer')
-let container_past_answers = document.getElementById('new')
 
 
+
+let help_arr = ['DEFAULT.TEMPLATE.................FALSE','DEFAULT.EVENT....................FALSE','DEFAULT.CONNECTION...............FALSE','DEFAULT.STABILIZATION............FALSE','DEFAULT.DATABASE.CONNECTION......FALSE']
+let set_help = false
+let config = false
 
 function resposta(){
     console.log(answer.value)
-    
-    if(answer.value == '/help'){
+    document.body.style.color = 'green'
 
+    if(answer.value === '/help'){
+        console.log('teste45')
+        set_help = true
+        answer.value = '~h. '
+    }
+
+    else if(answer.value == '~h. ls' && set_help == true){
+        answer.setAttribute('placeholder' , '')
+        document.body.style.color = 'red'
+        answer.value = ''
+        set_help = false
         console.log('funfando')
-        help_arr = ['DEFAULT.TEMPLATE.................FALSE','DEFAULT.EVENT....................FALSE','DEFAULT.CONNECTION...............FALSE','DEFAULT.STABILIZATION............FALSE']
+       
             contador_arr = 0
 
             let defaults = setInterval(()=>{
@@ -24,18 +37,36 @@ function resposta(){
                 clearInterval(defaults)
             }
         },590)
-    }else{
-        writtermachine(answer.value)
+    }
+    else if(answer.value == '/nct'){
+        container_writter.innerHTML = ''
+        answer.value = ''
+    }
+
+    else if(answer.value == '/sudo.fig'){
+        config = true
+        writtermachine('CMD CONFIG SET:')
+        answer.value = '~sys.config:    ()'
+    }
+    else if(answer.value = `~sys.config:    ('template',TRUE)` && config == true){
+        help_arr[0] = 'DEFAULT.TEMPLATE.................TRUE'
+        writtermachine('sys.TEMPLATE alterado')
+        answer.value = ''
+    }
+    else{
+        console.log('teste23')
+        writtermachine('comando não encontrado')
+        answer.value = ''
+        set_help = false
         
     }
-    answer.value = ''
 }
 
 
 
 function writtermachine(texto){
     newline = document.createElement('p')
-    newline.textContent = container_past_answers.textContent
+    newline.textContent = answer.value
     container_writter.appendChild(newline)
     let arr = texto.split('')
     let newarr = []
@@ -44,7 +75,8 @@ function writtermachine(texto){
     let escrita = setInterval(()=>{
         newarr.push(arr[contador])
         contador++
-        container_past_answers.textContent = newarr.join('')
+        x = newarr.join('')
+        newline.textContent = x
         
         if(contador >= arr.length ){
             clearInterval(escrita)
@@ -54,7 +86,7 @@ function writtermachine(texto){
 }
 
 function teste(){
-    let arr_teste = ['oii','DEFAULT.STABILIZATION............FALSE','DEFAULT.CONNECTION...............FALSE']
+    let arr_teste = ['oii','DEFAULT.DATABASE.CONNECTION......FALSE','DEFAULT.CONNECTION...............FALSE']
 
 
     let string_teste = arr_teste[2].split(' ')
