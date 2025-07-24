@@ -8,12 +8,18 @@
     <script src="Riddler.js" defer></script>
 
 </head>
-<body>
+<body oncl>
+
+   <audio id="audio" src="./Keyboard Click Sound Effect No Copyright.mp3"></audio>
+   <audio id="audio-templates" src="./DIGITAL TYPING - Sound Effect.mp3"></audio>
+   <audio id="audio-digito" src="./WhatsApp Audio 2025-07-23 at 22.34.44.mp3"></audio>
+   <audio src="./Sound Effects - Single keyboard type [FREE].mp3"></audio>
+   <a href="../aim/Aim.html"></a>
     <div id="pog"></div>
     <div class="last">
         <p id="new"></p>
     </div>
-    <input type="text" id="answer" onkeypress="if(event.keyCode == 13){ resposta() }" autocomplete="off" >
+    <input type="text" id="answer" onkeypress="if(event.keyCode == 13){ resposta() }" autocomplete="off" onkeydown="digito()" >
 
 </body>
 </html>

@@ -25,6 +25,7 @@ input{
     outline:none;
     width: 90vw;
     text-decoration:none ;
+    margin-bottom: 100px;
 }
 
 span{
@@ -33,4 +34,9 @@ span{
     font-size: large;
     color:red
 }
-
+.defaults{
+    font-family:  "VT323", monospace;
+    font-weight: 400;
+    font-size: large;
+    color:red  
+}
