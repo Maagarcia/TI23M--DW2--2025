@@ -5,7 +5,6 @@ let container_writter = document.getElementById('pog')
 let answer = document.getElementById('answer')
 
 
-
 let help_arr = [`<span>DEFAULT.TEMPLATE.................FALSE`, '<span>DEFAULT.EVENT....................FALSE', '<span>DEFAULT.CONNECTION...............FALSE', '<span>DEFAULT.STABILIZATION............FALSE', '<span>DEFAULT.DATABASE.CONNECTION......FALSE']
 let help_arr_verificador = [false, false, false, false, false]
 let ip1 = [`${(Math.random() * 255)}`, `${(Math.random() * 255).toFixed()}`, `${(Math.random() * 255).toFixed()}`, `${(Math.random() * 255).toFixed()}`]
@@ -223,7 +222,7 @@ function resposta() {
             casado = true
             break;
 
-        case (answer.value === '/start.sh' && help_arr_verificador.every(elem => elem ===false)):
+        case (answer.value === '/start.sh' && help_arr_verificador.every(elem => elem === true)):
             clear()
             writtermachine('>Initializing system...')
             let contador_inicializacao = 0
@@ -249,7 +248,7 @@ function resposta() {
                         writtermachine(">Conexão por Kernel's Lapse:    [ OK ]", 10)
                         break;
                     case 10:
-                        writtermachine('>Host do Servidor: <a href="../aim/Aim.html">srv-main-01.local</a>', 1)
+                        writtermachine('>Host do Servidor: <a href="./fase2/NewFase.html">srv-main-01.local</a>', 1)
                         break;
                     case 11:
                         clearInterval(inicializador)
@@ -259,10 +258,11 @@ function resposta() {
             }, 1000)
             answer.value = ''
             break;
-             case (answer.value === '/start.sh' && help_arr_verificador.every(elem => elem === false)):
-                writtermachine('Falha na conexão, Por favor verifique estado de aplicação dos nós necessários...')
-                answer.value = ''
-                break
+
+        case (answer.value === '/start.sh'):
+            writtermachine('Falha na conexão, Por favor verifique os estado de aplicação dos nós necessários...')
+            answer.value = ''
+            break
 
         default:
             writtermachine('Comando não encontrado')
