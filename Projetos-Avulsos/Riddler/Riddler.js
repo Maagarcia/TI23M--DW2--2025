@@ -1,6 +1,7 @@
 teste()
 block_function()
 
+
 let container_writter = document.getElementById('pog')
 let answer = document.getElementById('answer')
 
@@ -8,7 +9,7 @@ let answer = document.getElementById('answer')
 let help_arr = [`<span>DEFAULT.TEMPLATE.................FALSE`, '<span>DEFAULT.EVENT....................FALSE', '<span>DEFAULT.CONNECTION...............FALSE', '<span>DEFAULT.STABILIZATION............FALSE', '<span>DEFAULT.DATABASE.CONNECTION......FALSE']
 let help_arr_verificador = [false, false, false, false, false]
 let ip1 = [`${(Math.random() * 255)}`, `${(Math.random() * 255).toFixed()}`, `${(Math.random() * 255).toFixed()}`, `${(Math.random() * 255).toFixed()}`]
-let ip = [Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256)]
+let ip = [Math.floor(Math.random() * 255), Math.floor(Math.random() * 255), Math.floor(Math.random() * 256), Math.floor(Math.random() * 255)]
 let ip_bin = [ip[0].toString(2).padStart(8, '0'), ip[1].toString(2).padStart(8, '0'), ip[2].toString(2).padStart(8, '0'), ip[3].toString(2).padStart(8, '0')]
 let set_help = false
 let config = false
