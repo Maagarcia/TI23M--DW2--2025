@@ -148,3 +148,31 @@ span2{
 
 
 }
+
+/* span3{
+    display: inline-block;
+    color: rgb(255, 0, 0);
+    /* animation: carlos 1.5s ease-out infinite alternate; 
+}*/
+
+
+@keyframes carlos {
+    0%{ transform: translateY(1px);}
+
+    100%{ transform: translateY(-1px);}
+    
+}
+.wave span{
+    display: inline-block;
+    animation: wave-bounce 0.9s ease-in-out infinite alternate;
+    animation-delay: calc(var(--i) * 0.1s);
+}
+
+@keyframes wave-bounce {
+    from{
+        transform: translateY(0px);
+    }    
+    to{
+        transform: translateY(-3px);
+    }
+}
