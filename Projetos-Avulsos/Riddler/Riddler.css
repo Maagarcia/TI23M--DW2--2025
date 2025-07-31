@@ -149,11 +149,10 @@ span2{
 
 }
 
-/* span3{
+span3{
     display: inline-block;
-    color: rgb(255, 0, 0);
-    /* animation: carlos 1.5s ease-out infinite alternate; 
-}*/
+    color: rgb(42, 42, 42);
+} 
 
 
 @keyframes carlos {

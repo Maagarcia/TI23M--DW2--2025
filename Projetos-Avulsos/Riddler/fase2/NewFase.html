@@ -8,22 +8,26 @@
     <script src="./newfase.js" defer></script>
 </head>
 <body>
+
+   <audio id="audio-digito" src="../sons/WhatsApp Audio 2025-07-23 at 22.34.44.mp3"></audio>
+   <audio id="audio-enter" src="../sons/Keyboard Click Sound Effect No Copyright.mp3"></audio>
+   <audio id='audio-mensagem-recebida' src="../sons/Fears to Fathom - Ironbark Lookout ｜ Text Message Notification [Sound Effect].mp3"></audio>
     <div class="console" id="console">
         <div id="input_respostas"></div>
-        <input type="text" name="" id="input_console" onkeydown="if(event.keyCode == 13){ resposta_input() }">
+        <input type="text" name="" id="input_console" onkeydown="if(event.keyCode == 13){ resposta_input() }else{ typing_normal()}">
     </div>
     <h1 style="margin-left: 10px; font-weight: 100;">Home</h1>
     <div class="container">
 
         <div class="chat">
-            <div style="text-align: right; padding: 2px;">online: 1/16</div>
+            <div style="text-align: right; padding: 2px;">online: 2/16</div>
             <div class="chat-principal" id="chat-principal">
 
-                <p><span2>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis optio repudiandae recusandae nemo autem minima aut atque dolore consequuntur quo, porro ab explicabo doloribus nulla sapiente itaque alias magnam provident?</span2></p>
+                <!-- <p><span2>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis optio repudiandae recusandae nemo autem minima aut atque dolore consequuntur quo, porro ab explicabo doloribus nulla sapiente itaque alias magnam provident?</span2></p> -->
             </div>
 
             <div class="teclado">
-                <textarea name="" id="resposta_escrita" autocomplete="off" onkeypress='if(event.keyCode == 13){ sending() }'></textarea>
+                <textarea name="" id="resposta_escrita" autocomplete="off" onkeypress='if(event.keyCode == 13){ sending() }else{ typing_normal()}' disabled></textarea>
             </div>
         </div>
         <div class="alternativas">

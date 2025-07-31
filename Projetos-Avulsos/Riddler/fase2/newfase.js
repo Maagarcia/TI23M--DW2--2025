@@ -5,6 +5,10 @@ let chat_bar = document.getElementById('resposta_escrita')
 let buttons = document.querySelectorAll('button')
 let console_input = document.getElementById('console')
 
+let audio_digito = document.getElementById('audio-digito')
+let audio_enter = document.getElementById('audio-enter')
+let audio_mensagem_recebida = document.getElementById('audio-mensagem-recebida')
+
 let input_do_console = document.getElementById('input_console')
 let container_input_respostas = document.getElementById('input_respostas')
 
@@ -56,6 +60,7 @@ let count_array_text = 0
 let count_array_position = 0
 
 function typing() {
+    audio_digito.cloneNode().play()
     let newtexto = array_answers[count_array_position]
     let arraw = newtexto.split('')
     console.log('teste de escrita')
@@ -71,10 +76,64 @@ function typing() {
     }
 }
 
-function sending() {
+let count_interval_messagen = 0
+let number_messagen = 0
+function messagem() {
     let chat_principal = document.getElementById('chat-principal')
     let newp = document.createElement('p')
-    newp.textContent = chat_bar.value
+    console.log('teste')
+    number_messagen += 1
+    buttons.forEach(elemento => elemento.setAttribute('disabled','disabled'))
+    switch (true) {
+        case (number_messagen == 1):
+            console.log('case')
+            let mensagem = setInterval(() => {
+                newp.innerHTML = `<span3>m24xc is typing...`
+                chat_principal.appendChild(newp)
+                if (count_interval_messagen === 1) {
+                    newp.innerHTML = `<span2> > Quem seria?`
+                    audio_mensagem_recebida.play()
+                    hostil.textContent = 'Não te interessa'
+                    neutro.textContent = 'Depende'
+                    amigavel.textContent = 'Eu nao sei se posso dizer, desculpa'
+                    buttons.forEach(elemento => elemento.removeAttribute('disabled'))
+                    clearTimeout(mensagem)
+                }
+                count_interval_messagen++
+            }, 3000)
+            console.log('bdsjbsk')
+            break;
+        case (number_messagen == 2):
+            console.log('case')
+            let mensagem2 = setInterval(() => {
+                newp.innerHTML = `<span3>m24xc is typing...`
+                chat_principal.appendChild(newp)
+                if (count_interval_messagen === 1) {
+                    audio_mensagem_recebida.play()
+                    newp.innerHTML = `<span2> > O que voce faz aqui?`
+                    hostil.textContent = 'Não te interessa'
+                    neutro.textContent = 'Eu...não sei'
+                    amigavel.textContent = 'Xeretando'
+                    clearTimeout(mensagem2)
+                }
+                count_interval_messagen++
+            }, 3000)
+            console.log('bdsjbsk2')
+            break;
+        default:
+            console.log('default')
+            break;
+        }
+        count_interval_messagen = 0
+}
+
+function sending() {
+    messagem()
+    console.log('oiteste')
+    audio_enter.cloneNode().play()
+    let chat_principal = document.getElementById('chat-principal')
+    let newp = document.createElement('p')
+    newp.textContent = `> ${chat_bar.value}`
     chat_principal.appendChild(newp)
     buttons.forEach(elemento => {
         elemento.removeAttribute('disabled')
@@ -95,6 +154,7 @@ document.addEventListener('keydown', (event) => {
 
 
 function resposta_input() {
+    audio_enter.cloneNode().play()
     switch (true) {
         case (input_do_console.value == '/info'):
             let ip_to_writer = ip.join('.')
@@ -133,4 +193,8 @@ function block_function() {
         writtermachine('CMD_BIOS ACCESS: <span>NEGADO', 5)
         e.preventDefault();
     }, false);
+}
+
+function typing_normal() {
+    audio_digito.cloneNode().play()
 }
