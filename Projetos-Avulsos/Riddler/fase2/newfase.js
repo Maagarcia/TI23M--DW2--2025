@@ -18,6 +18,9 @@ let ip_bin = [ip[0].toString(2).padStart(8, '0'), ip[1].toString(2).padStart(8, 
 
 let array_answers = []
 
+let mensagem
+let array_mensagens
+
 function resposta_chat(option) {
     let hostil = document.getElementById('hostil')
     let neutro = document.getElementById('neutro')
@@ -63,7 +66,7 @@ function typing() {
     audio_digito.cloneNode().play()
     let newtexto = array_answers[count_array_position]
     let arraw = newtexto.split('')
-    console.log('teste de escrita')
+    // console.log('teste de escrita')
     chat_bar.value += arraw[count_array_text]
     count_array_text += 1
 
@@ -81,13 +84,15 @@ let number_messagen = 0
 function messagem() {
     let chat_principal = document.getElementById('chat-principal')
     let newp = document.createElement('p')
-    console.log('teste')
+    buttons.forEach(elemement => {
+        elemement.setAttribute('disabled', 'disabled')
+    })
+    // console.log('teste')
     number_messagen += 1
-    buttons.forEach(elemento => elemento.setAttribute('disabled','disabled'))
     switch (true) {
         case (number_messagen == 1):
-            console.log('case')
-            let mensagem = setInterval(() => {
+            // console.log('case')
+            mensagem = setInterval(() => {
                 newp.innerHTML = `<span3>m24xc is typing...`
                 chat_principal.appendChild(newp)
                 if (count_interval_messagen === 1) {
@@ -96,16 +101,16 @@ function messagem() {
                     hostil.textContent = 'Não te interessa'
                     neutro.textContent = 'Depende'
                     amigavel.textContent = 'Eu nao sei se posso dizer, desculpa'
-                    buttons.forEach(elemento => elemento.removeAttribute('disabled'))
+                    buttons.forEach(elemento => { elemento.removeAttribute('disabled') })
                     clearTimeout(mensagem)
                 }
                 count_interval_messagen++
             }, 3000)
-            console.log('bdsjbsk')
+            // console.log('bdsjbsk')
             break;
         case (number_messagen == 2):
-            console.log('case')
-            let mensagem2 = setInterval(() => {
+            // console.log('case')
+            mensagem = setInterval(() => {
                 newp.innerHTML = `<span3>m24xc is typing...`
                 chat_principal.appendChild(newp)
                 if (count_interval_messagen === 1) {
@@ -114,30 +119,60 @@ function messagem() {
                     hostil.textContent = 'Não te interessa'
                     neutro.textContent = 'Eu...não sei'
                     amigavel.textContent = 'Xeretando'
-                    clearTimeout(mensagem2)
+
+                    buttons.forEach(elemement => {
+                        elemement.removeAttribute('disabled')
+                    })
+                    clearTimeout(mensagem)
                 }
                 count_interval_messagen++
             }, 3000)
-            console.log('bdsjbsk2')
+            // console.log('bdsjbsk2')
             break;
+        case (number_messagen == 3):
+            let newp2 = document.createElement('p')
+            mensagem = setInterval(() => {
+                console.log('primeiro is typing')
+                newp.innerHTML = "<span3>m24xc is typing..."
+                chat_principal.appendChild(newp)
+                if (count_interval_messagen == 1) {
+                    audio_mensagem_recebida.play()
+                    newp.innerHTML = `<span2> > Não era pra voce estar aqui`
+                    console.log('primeira mensagem')
+                    let mensagem2 = setInterval(()=>{
+                        console.log('iniciando a segunda mensagem')
+                        chat_principal.appendChild(newp2)
+                        newp2.innerHTML = '<span3> m24xc is typing...'
+                        if(count_interval_messagen == 3){
+                            audio_mensagem_recebida.play()
+                            newp2.innerHTML = '<span2> > Vai embora'
+                            clearInterval(mensagem2)
+                        }
+                        count_interval_messagen++
+                    },3000)
+                    clearInterval(mensagem)
+                    // clearInterval(mensagem)
+                }
+                    count_interval_messagen++   
+            },6000)
         default:
-            console.log('default')
+            // console.log('default')
             break;
-        }
-        count_interval_messagen = 0
+    }
+    count_interval_messagen = 0
 }
 
 function sending() {
     messagem()
-    console.log('oiteste')
+    // console.log('oiteste')
     audio_enter.cloneNode().play()
     let chat_principal = document.getElementById('chat-principal')
     let newp = document.createElement('p')
     newp.textContent = `> ${chat_bar.value}`
     chat_principal.appendChild(newp)
-    buttons.forEach(elemento => {
-        elemento.removeAttribute('disabled')
-    })
+    // buttons.forEach(elemento => {
+    //     elemento.removeAttribute('disabled')
+    // })
     document.body.removeAttribute('onkeypress')
     chat_bar.value = ''
 }
@@ -153,19 +188,53 @@ document.addEventListener('keydown', (event) => {
 })
 
 
+
+let info_verification = false
+let ip_verification = false
 function resposta_input() {
     audio_enter.cloneNode().play()
     switch (true) {
         case (input_do_console.value == '/info'):
+            info_verification = true
+            input_do_console.value = '~h '
+            break;
+        case (input_do_console.value == '~h ip' && info_verification == true && ip_verification == true):
             let ip_to_writer = ip.join('.')
+            input_do_console.value = ''
+            info_verification = false
             writtermachine(`IP_ADDRESS: ${ip_to_writer}`)
             break;
+        case (input_do_console.value == '~h ip-bin' && info_verification == true && ip_verification == true):
+            let ip_bin_to_writer = ip_bin.join('.')
+            input_do_console.value = ''
+            info_verification = false
+            writtermachine(`IP_BIN_ADDRESS: ${ip_bin_to_writer}`)
+            break;
 
+        case (input_do_console.value == '~h ip' && info_verification == true && ip_verification == false):
+            input_do_console.value = ''
+            info_verification = false
+            writtermachine(`IP_ADDRESS: <span3 class='wave'><span style='--i:0'>x</span><span style='--i:1'>x</span><span style='--i:2'>x</span><span style='--i:3'>.</span><span style='--i:4'>x</span><span style='--i:5'>x</span><span style='--i:6'>x</span><span style='--i:7'>.</span><span style='--i:8'>x</span><span style='--i:9'>x</span><span style='--i:10'>x</span><span style='--i:11'>.</span><span style='--i:12'>x</span><span style='--i:13'>x</span><span style='--i:14'>x</span>`, 1)
+            break
+        case (input_do_console.value == '~h ip-bin' && info_verification == true && ip_verification == false):
+            input_do_console.value = ''
+            info_verification = false
+            writtermachine(`IP_BIN_ADDRESS: <span3 class='wave'><span style='--i:0'>x</span><span style='--i:1'>x</span><span style='--i:2'>x</span><span style='--i:3'>.</span><span style='--i:4'>x</span><span style='--i:5'>x</span><span style='--i:6'>x</span><span style='--i:7'>.</span><span style='--i:8'>x</span><span style='--i:9'>x</span><span style='--i:10'>x</span><span style='--i:11'>.</span><span style='--i:12'>x</span><span style='--i:13'>x</span><span style='--i:14'>x</span>`, 1)
+            break
+
+        case (input_do_console.value == '/start.sh'):
+            input_do_console.value = ''
+            writtermachine('Testando conexão...')
+            mensagem = setTimeout(() => {
+                writtermachine('Conexão funcional.....1ms')
+                clearTimeout(mensagem)
+            }, 300)
+            break;
         default:
             writtermachine('Comando não encontrado')
+            input_do_console.value = ''
             break;
     }
-    input_do_console.value = ''
 }
 
 

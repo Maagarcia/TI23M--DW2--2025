@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,14 +8,16 @@
     <link rel="stylesheet" href="../Riddler.css">
     <script src="./newfase.js" defer></script>
 </head>
+
 <body>
 
-   <audio id="audio-digito" src="../sons/WhatsApp Audio 2025-07-23 at 22.34.44.mp3"></audio>
-   <audio id="audio-enter" src="../sons/Keyboard Click Sound Effect No Copyright.mp3"></audio>
-   <audio id='audio-mensagem-recebida' src="../sons/Fears to Fathom - Ironbark Lookout ｜ Text Message Notification [Sound Effect].mp3"></audio>
+    <audio id="audio-digito" src="../sons/WhatsApp Audio 2025-07-23 at 22.34.44.mp3"></audio>
+    <audio id="audio-enter" src="../sons/Keyboard Click Sound Effect No Copyright.mp3"></audio>
+    <audio id="audio-mensagem-recebida" src="../sons/Fears to Fathom - Ironbark Lookout ｜ Text Message Notification [Sound Effect].mp3"></audio>
     <div class="console" id="console">
         <div id="input_respostas"></div>
-        <input type="text" name="" id="input_console" onkeydown="if(event.keyCode == 13){ resposta_input() }else{ typing_normal()}">
+        <input type="text" name="" id="input_console"
+            onkeydown="if(event.keyCode == 13){ resposta_input() }else{ typing_normal()}">
     </div>
     <h1 style="margin-left: 10px; font-weight: 100;">Home</h1>
     <div class="container">
@@ -27,7 +30,8 @@
             </div>
 
             <div class="teclado">
-                <textarea name="" id="resposta_escrita" autocomplete="off" onkeypress='if(event.keyCode == 13){ sending() }else{ typing_normal()}' disabled></textarea>
+                <textarea name="" id="resposta_escrita" autocomplete="off"
+                    onkeypress='if(event.keyCode == 13){ sending() }else{ typing_normal()}' disabled></textarea>
             </div>
         </div>
         <div class="alternativas">
@@ -40,4 +44,5 @@
         </div>
     </div>
 </body>
+
 </html>
