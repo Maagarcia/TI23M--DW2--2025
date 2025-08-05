@@ -3,11 +3,14 @@
 
 let chat_bar = document.getElementById('resposta_escrita')
 let buttons = document.querySelectorAll('button')
+let membros_onlines = document.getElementById('online_members')
 let console_input = document.getElementById('console')
 
 let audio_digito = document.getElementById('audio-digito')
 let audio_enter = document.getElementById('audio-enter')
 let audio_mensagem_recebida = document.getElementById('audio-mensagem-recebida')
+let audio_entrarchat = document.getElementById('audio_entrarchat')
+let audio_saidachat = document.getElementById('audio_left_chat')
 
 let input_do_console = document.getElementById('input_console')
 let container_input_respostas = document.getElementById('input_respostas')
@@ -20,6 +23,12 @@ let array_answers = []
 
 let mensagem
 let array_mensagens
+
+let enter_verification = false
+if (enter_verification == false) {
+    audio_entrarchat.play()
+    enter_verification = true
+}
 
 function resposta_chat(option) {
     let hostil = document.getElementById('hostil')
@@ -96,7 +105,7 @@ function messagem() {
                 newp.innerHTML = `<span3>m24xc is typing...`
                 chat_principal.appendChild(newp)
                 if (count_interval_messagen === 1) {
-                    newp.innerHTML = `<span2> > Quem seria?`
+                    newp.innerHTML = `<span2> > <l style="font-weight: bolder;">m24xc:</l> Quem seria?`
                     audio_mensagem_recebida.play()
                     hostil.textContent = 'Não te interessa'
                     neutro.textContent = 'Depende'
@@ -115,7 +124,7 @@ function messagem() {
                 chat_principal.appendChild(newp)
                 if (count_interval_messagen === 1) {
                     audio_mensagem_recebida.play()
-                    newp.innerHTML = `<span2> > O que voce faz aqui?`
+                    newp.innerHTML = `<span2> > <l style="font-weight: bolder;">m24xc:</l> O que voce faz aqui?`
                     hostil.textContent = 'Não te interessa'
                     neutro.textContent = 'Eu...não sei'
                     amigavel.textContent = 'Xeretando'
@@ -137,24 +146,71 @@ function messagem() {
                 chat_principal.appendChild(newp)
                 if (count_interval_messagen == 1) {
                     audio_mensagem_recebida.play()
-                    newp.innerHTML = `<span2> > Não era pra voce estar aqui`
+                    newp.innerHTML = `<span2> > <l style="font-weight: bolder;">m24xc</l> Não era pra voce estar aqui`
                     console.log('primeira mensagem')
-                    let mensagem2 = setInterval(()=>{
+                    let mensagem2 = setInterval(() => {
                         console.log('iniciando a segunda mensagem')
                         chat_principal.appendChild(newp2)
                         newp2.innerHTML = '<span3> m24xc is typing...'
-                        if(count_interval_messagen == 3){
+                        if (count_interval_messagen == 3) {
                             audio_mensagem_recebida.play()
-                            newp2.innerHTML = '<span2> > Vai embora'
+                            newp2.innerHTML = '<span2> > <l style="font-weight: bolder;">m24xc:</l> Vai embora'
+                            hostil.textContent = 'Me obriga.'
+                            neutro.textContent = 'Olha eu nao quero confusão, eu só quero saber o que seria tudo isso'
+                            amigavel.textContent = "Aaah mas eu cheguei agora :'("
+                            buttons.forEach(elemement => {
+                                elemement.removeAttribute('disabled')
+                            })
                             clearInterval(mensagem2)
                         }
                         count_interval_messagen++
-                    },3000)
+                    }, 3000)
                     clearInterval(mensagem)
                     // clearInterval(mensagem)
                 }
-                    count_interval_messagen++   
-            },6000)
+                count_interval_messagen++
+            }, 6000)
+            break;
+            case (number_messagen == 4):
+                mensagem = setInterval(()=>{
+                    newp.innerHTML = '<span3>m24xc is typing...'
+                    chat_principal.appendChild(newp)
+                    if(count_interval_messagen == 1){
+                        audio_mensagem_recebida.play()
+                        newp.innerHTML = '<span2> > <l style="font-weight: bolder;">m24xc:</l> IP.'
+                        buttons.forEach(ellement => {ellement.removeAttribute('disabled')})
+                        hostil.textContent = 'Não sei e nao vou te passar, babaca'
+                        neutro.textContent = 'Eu não sei qual é, está bloqueado'
+                        amigavel.textContent = 'Eu nao consigo saber'
+                        clearInterval(mensagem)
+                    }
+                    count_interval_messagen++
+                },2000)
+                break;
+                case(number_messagen == 5):
+                mensagem = setInterval(()=>{
+                    newp.innerHTML = '<span3>m24xc is typing...'
+                    chat_principal.appendChild(newp)
+                    if(count_interval_messagen == 1){
+                        audio_mensagem_recebida.play()
+                        newp.innerHTML = '<span2> > <l style = "font-weight: bolder;">m24xc:</l> <a href="../hacking.html" target="_blank" rel="noopener noreferrer">niex.ist</a>'
+                        buttons.forEach(ellement => {ellement.removeAttribute('disabled')})
+                        buttons.forEach(ellement =>{ ellement.textContent = 'O que é isso?'})
+                        clearInterval(mensagem)
+                    }
+                    count_interval_messagen++
+                },2000)
+                break;
+            case(number_messagen == 6):
+                mensagem = setInterval(()=>{
+                    audio_saidachat.play()
+                    membros_onlines.textContent = 'online: 1/16'
+                    newp.innerHTML = '<span3>m24xc left</span3>'
+                    chat_principal.appendChild(newp)
+
+                    clearInterval(mensagem)
+                },1000)
+                break;
         default:
             // console.log('default')
             break;
@@ -168,7 +224,7 @@ function sending() {
     audio_enter.cloneNode().play()
     let chat_principal = document.getElementById('chat-principal')
     let newp = document.createElement('p')
-    newp.textContent = `> ${chat_bar.value}`
+    newp.innerHTML = `> <l style="font-weight: bolder;">pf98x:</l> ${chat_bar.value}`
     chat_principal.appendChild(newp)
     // buttons.forEach(elemento => {
     //     elemento.removeAttribute('disabled')
@@ -177,12 +233,15 @@ function sending() {
     chat_bar.value = ''
 }
 
+
+let footer = document.getElementById('footer')
 document.addEventListener('keydown', (event) => {
     if (event.code === 'F2') {
         if (console_input.style.display === 'block') {
             console_input.style.display = 'none'
         } else {
             console_input.style.display = 'block'
+            footer.style.display = 'none'
         }
     }
 })
@@ -190,7 +249,7 @@ document.addEventListener('keydown', (event) => {
 
 
 let info_verification = false
-let ip_verification = false
+let ip_verification = true
 function resposta_input() {
     audio_enter.cloneNode().play()
     switch (true) {
