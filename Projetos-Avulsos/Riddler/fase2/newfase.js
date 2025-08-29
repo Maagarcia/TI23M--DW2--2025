@@ -44,8 +44,8 @@ function resposta_chat(option) {
         array_answers.push(texto)
         console.log(array_answers)
         chat_bar.setAttribute('disabled', 'disabled')
-
     }
+
     if (option.name === 'neutro') {
         console.log('neutro')
         console.log(hostil.textContent)
