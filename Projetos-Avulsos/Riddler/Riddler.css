@@ -175,3 +175,11 @@ span3{
         transform: translateY(-3px);
     }
 }
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: xx-large;
+    padding-right: 100px;
+}

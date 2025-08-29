@@ -5,6 +5,7 @@ let chat_bar = document.getElementById('resposta_escrita')
 let buttons = document.querySelectorAll('button')
 let membros_onlines = document.getElementById('online_members')
 let console_input = document.getElementById('console')
+let horario = document.getElementById('horario')
 
 let audio_digito = document.getElementById('audio-digito')
 let audio_enter = document.getElementById('audio-enter')
@@ -84,7 +85,7 @@ function typing() {
         count_array_position += 1
         document.body.removeAttribute('onkeypress')
         document.body.setAttribute('onkeypress', 'if(event.keyCode == 13){ sending() }')
-        chat_bar.removeAttribute('disabled')
+        // chat_bar.removeAttribute('disabled')
     }
 }
 
@@ -193,7 +194,7 @@ function messagem() {
                     chat_principal.appendChild(newp)
                     if(count_interval_messagen == 1){
                         audio_mensagem_recebida.play()
-                        newp.innerHTML = '<span2> > <l style = "font-weight: bolder;">m24xc:</l> <a href="../hacking.html" target="_blank" rel="noopener noreferrer">niex.ist</a>'
+                        newp.innerHTML = '<span2 onclick="teste()"> > <l style = "font-weight: bolder;">m24xc:</l> <a href="../hacking.html" target="_blank" rel="noopener noreferrer">niex.ist</a>'
                         buttons.forEach(ellement => {ellement.removeAttribute('disabled')})
                         buttons.forEach(ellement =>{ ellement.textContent = 'O que é isso?'})
                         clearInterval(mensagem)
@@ -326,3 +327,31 @@ function block_function() {
 function typing_normal() {
     audio_digito.cloneNode().play()
 }
+
+function teste(){
+    console.log('funcionando')
+}
+
+let double_dots = true
+
+function relógio(){
+    const now = new Date()
+
+    let minutos = now.getMinutes()
+    let horas = now.getHours()
+
+    horas = horas.toString().padStart(2,'0')
+    minutos = minutos.toString().padStart(2,'0')
+    if(double_dots == true){
+        horario.textContent = `${horas}:${minutos}`
+        double_dots = !double_dots
+    }else{
+        horario.textContent = `${horas} ${minutos}`
+        double_dots = !double_dots
+
+    }
+}
+
+setInterval(relógio,1000)
+
+relógio()
