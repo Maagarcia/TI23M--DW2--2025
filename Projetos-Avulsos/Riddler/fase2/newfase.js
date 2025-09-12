@@ -1,8 +1,9 @@
 // block_function()
 
 
+let chat_principal = document.getElementById('chat-principal')//onde a conversa ocorre
 let chat_bar = document.getElementById('resposta_escrita')
-let buttons = document.querySelectorAll('button')
+let buttons = document.querySelectorAll('button')//opções de resporta
 let membros_onlines = document.getElementById('online_members')
 let console_input = document.getElementById('console')
 let horario = document.getElementById('horario')
@@ -172,46 +173,46 @@ function messagem() {
                 count_interval_messagen++
             }, 6000)
             break;
-            case (number_messagen == 4):
-                mensagem = setInterval(()=>{
-                    newp.innerHTML = '<span3>m24xc is typing...'
-                    chat_principal.appendChild(newp)
-                    if(count_interval_messagen == 1){
-                        audio_mensagem_recebida.play()
-                        newp.innerHTML = '<span2> > <l style="font-weight: bolder;">m24xc:</l> IP.'
-                        buttons.forEach(ellement => {ellement.removeAttribute('disabled')})
-                        hostil.textContent = 'Não sei e nao vou te passar, babaca'
-                        neutro.textContent = 'Eu não sei qual é, está bloqueado'
-                        amigavel.textContent = 'Eu nao consigo saber'
-                        clearInterval(mensagem)
-                    }
-                    count_interval_messagen++
-                },2000)
-                break;
-                case(number_messagen == 5):
-                mensagem = setInterval(()=>{
-                    newp.innerHTML = '<span3>m24xc is typing...'
-                    chat_principal.appendChild(newp)
-                    if(count_interval_messagen == 1){
-                        audio_mensagem_recebida.play()
-                        newp.innerHTML = '<span2 onclick="teste()"> > <l style = "font-weight: bolder;">m24xc:</l> <a href="../hacking.html" target="_blank" rel="noopener noreferrer">niex.ist</a>'
-                        buttons.forEach(ellement => {ellement.removeAttribute('disabled')})
-                        buttons.forEach(ellement =>{ ellement.textContent = 'O que é isso?'})
-                        clearInterval(mensagem)
-                    }
-                    count_interval_messagen++
-                },2000)
-                break;
-            case(number_messagen == 6):
-                mensagem = setInterval(()=>{
-                    audio_saidachat.play()
-                    membros_onlines.textContent = 'online: 1/16'
-                    newp.innerHTML = '<span3>m24xc left</span3>'
-                    chat_principal.appendChild(newp)
-
+        case (number_messagen == 4):
+            mensagem = setInterval(() => {
+                newp.innerHTML = '<span3>m24xc is typing...'
+                chat_principal.appendChild(newp)
+                if (count_interval_messagen == 1) {
+                    audio_mensagem_recebida.play()
+                    newp.innerHTML = '<span2> > <l style="font-weight: bolder;">m24xc:</l> IP.'
+                    buttons.forEach(ellement => { ellement.removeAttribute('disabled') })
+                    hostil.textContent = 'Não sei e nao vou te passar, babaca'
+                    neutro.textContent = 'Eu não sei qual é, está bloqueado'
+                    amigavel.textContent = 'Eu nao consigo saber'
                     clearInterval(mensagem)
-                },1000)
-                break;
+                }
+                count_interval_messagen++
+            }, 2000)
+            break;
+        case (number_messagen == 5):
+            mensagem = setInterval(() => {
+                newp.innerHTML = '<span3>m24xc is typing...'
+                chat_principal.appendChild(newp)
+                if (count_interval_messagen == 1) {
+                    audio_mensagem_recebida.play()
+                    newp.innerHTML = '<span2 onclick="teste()"> > <l style = "font-weight: bolder;">m24xc:</l> <a href="../hacking.html" target="_blank" rel="noopener noreferrer">niex.ist</a>'
+                    buttons.forEach(ellement => { ellement.removeAttribute('disabled') })
+                    buttons.forEach(ellement => { ellement.textContent = 'O que é isso?' })
+                    clearInterval(mensagem)
+                }
+                count_interval_messagen++
+            }, 2000)
+            break;
+        case (number_messagen == 6):
+            mensagem = setInterval(() => {
+                audio_saidachat.play()
+                membros_onlines.textContent = 'online: 1/16'
+                newp.innerHTML = '<span3>m24xc left</span3>'
+                chat_principal.appendChild(newp)
+
+                clearInterval(mensagem)
+            }, 1000)
+            break;
         default:
             // console.log('default')
             break;
@@ -219,8 +220,51 @@ function messagem() {
     count_interval_messagen = 0
 }
 
+async function mensagem2() {
+    await pausa()
+    resposta()
+    writtermachine("dhashdi")
+
+}
+
+// let chat_principal = document.getElementById('chat-principal')
+let newp = document.createElement('p')
+
+function pausa_para_escrita(){
+    setTimeout(3000)
+}
+
+function pausa() {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            newp.innerHTML = '<span3>m24xc is typing...'
+            console.log("testando")
+            chat_principal.appendChild(newp)
+            resolve()
+
+
+
+        }, 3000)
+    })
+}
+
+function resposta() {
+    return new Promise((resolve) => {
+        setTimeout(()=>{
+            console.log("reposta dada")
+            newp.innerHTML = `<span2> > <l style="font-weight: bolder;">m24xc:</l> Quem seria?`
+            audio_mensagem_recebida.play()
+            resolve()
+
+        }, 3000)
+    
+        
+    })
+}
+
 function sending() {
     messagem()
+    // mensagem2()
     // console.log('oiteste')
     audio_enter.cloneNode().play()
     let chat_principal = document.getElementById('chat-principal')
@@ -233,6 +277,7 @@ function sending() {
     document.body.removeAttribute('onkeypress')
     chat_bar.value = ''
 }
+
 
 
 let footer = document.getElementById('footer')
@@ -299,7 +344,7 @@ function resposta_input() {
 
 
 function writtermachine(texto, tempo = 15) {
-    console.log('teste da maquina de escever')
+    // console.log('teste da maquina de escever')
     let newline = document.createElement('p')
     container_input_respostas.appendChild(newline)
     let newarr = texto.split('')
@@ -328,30 +373,30 @@ function typing_normal() {
     audio_digito.cloneNode().play()
 }
 
-function teste(){
-    console.log('funcionando')
+function teste() {
+    chat_principal.innerHTML = ''
 }
 
 let double_dots = true
 
-function relógio(){
+function relógio() {
     const now = new Date()
 
     let minutos = now.getMinutes()
     let horas = now.getHours()
 
-    horas = horas.toString().padStart(2,'0')
-    minutos = minutos.toString().padStart(2,'0')
-    if(double_dots == true){
+    horas = horas.toString().padStart(2, '0')
+    minutos = minutos.toString().padStart(2, '0')
+    if (double_dots == true) {
         horario.textContent = `${horas}:${minutos}`
         double_dots = !double_dots
-    }else{
+    } else {
         horario.textContent = `${horas} ${minutos}`
         double_dots = !double_dots
 
     }
 }
 
-setInterval(relógio,1000)
+setInterval(relógio, 1000)
 
 relógio()
