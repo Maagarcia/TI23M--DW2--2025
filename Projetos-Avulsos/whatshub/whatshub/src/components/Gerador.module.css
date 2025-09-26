@@ -1,0 +1,41 @@
+.container{
+    border: 1px solid gray;
+    width: fit-content;
+    min-width: 300px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+}
+
+.div_temp{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.inputs_container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.link_container{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid gray;
+    padding: 10px;
+    gap: 10px;
+}
+
+.buttons_container{
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.geradorParaWhats{
+    width:100%;
+    color: black;
+}
