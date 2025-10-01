@@ -20,7 +20,7 @@ export default function Gerador() {
     
   }
     
-  const handleCopy = async()=>{
+  const handleCopy = (e)=>{
     e.preventDefault();
     navigator.clipboard.writeText(link)
     alert('link copiado')
@@ -65,10 +65,10 @@ export default function Gerador() {
 
         </form>
 
-          <form action="" className={styles.link_container} onSubmit={handleCopy}>
+          <form action="" className={styles.link_container} >
             <div className={styles.buttons_container}>
             <input type="text" name="" id="" value={link} disabled className={styles.geradorParaWhats} />
-            <button>o</button>
+            <button onClick={handleCopy}>o</button>
             </div>
             <button onClick={redirect}>Abrir no Whatsapp</button>
           </form>
