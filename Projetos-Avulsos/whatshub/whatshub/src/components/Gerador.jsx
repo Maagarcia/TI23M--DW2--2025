@@ -1,20 +1,19 @@
 import { useState } from "react";
 import styles from "./Gerador.module.css";
+import { NumericFormat } from 'react-number-format'
 
-export default function Gerador() {
+export default function Gerador({numeroSelect , setNumeroSelect}) {
 
-  const [numero,setNumero] = useState('')
-  
   const [mensagem, setMensagem] = useState('')
 
   const [link, setLink] = useState('')
 
   const especialCaracters = ['(', ')', '-']
-  let url = `https://wa.me/55${numero.split('').filter(char => !especialCaracters.includes(char)).join('')}?text=${mensagem}`
+  let url = `https://wa.me/55${numeroSelect.split('').filter(char => !especialCaracters.includes(char)).join('')}?text=${mensagem.replace(/ /g, '%20')}`
   
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(numero)
+    // console.log(numero)
     console.log(mensagem)
     setLink(url)
     
@@ -27,8 +26,9 @@ export default function Gerador() {
   }
 
   const handeChange = (e)=>{
-    setNumero(((e.target.value).replace(/\D/g, '').replace(/(\d{2})(\d{5})(\d{4})/, '($1)$2-$3')))
+    setNumeroSelect(((e.target.value).replace(/\D/g, '').replace(/(\d{2})(\d{5})(\d{4})/, '($1)$2-$3')))
     // setNumero(e.target.value)
+    console.log(numeroSelect.formattedValue)
   }
 
 
@@ -54,7 +54,11 @@ export default function Gerador() {
         > 
           <div className={styles.div_temp}>
             <h5>Numero do Whatsapp</h5>
-            <input type="tel" value={numero} onChange={handeChange}/>
+            {/* <input type="tel" value={numeroSelect} onChange={handeChange}/> */}
+            <NumericFormat value={numeroSelect}
+            onChange={handeChange }
+            format="(##) ####-####"
+            mask="_"/>
           </div>
 
           <div className={styles.div_temp}>

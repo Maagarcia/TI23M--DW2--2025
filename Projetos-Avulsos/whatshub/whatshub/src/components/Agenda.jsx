@@ -2,10 +2,14 @@ import { useState } from "react";
 import { supabase } from "./Supabase";
 import { useEffect } from "react";
 
-import styles from './Agenda.module.css'
 
-export default function Agenda() {
+import styles from './Agenda.module.css'
+import Gerador from "./Gerador";
+
+export default function Agenda({setNumeroSelect}) {
   const [nome, setNome] = useState("");
+
+  const [carregando, setCarregando] = useState(false)
 
   const [numero, setNumero] = useState("");
 
@@ -18,12 +22,24 @@ export default function Agenda() {
   const [novoNumero, setNovoNumero] = useState("");
 
   const mostrar_data = async () => {
-    const { data } = await supabase
-      .from("contatos")
-      .select("*")
-      .order("created_at", { ascending: true });
-      setContato(data);
-    console.log(contato)
+    try{
+      setCarregando(true)
+      const { data, error} = await supabase
+        .from("contatos")
+        .select("*")
+        .order("created_at", { ascending: true });
+        setContato(data);
+      // console.log(contato)
+
+      if (error) throw error
+
+    }catch (error){
+      alert(error.message)
+      console.error(error)
+    }finally{
+      setCarregando(false)
+    }
+    
       
   };
 
@@ -38,8 +54,15 @@ export default function Agenda() {
   const inserir_data = async () => {
     if (nome == "" || numero == "") {
       alert("preencha os campos!");
-      return;
-    } else {
+      return   
+    } 
+    if(numero.length < 11){
+      alert('preencha com um numero válido')
+      setNumero('')
+      return
+    }
+    
+    else {
       const { error } = await supabase
         .from("contatos")
         .insert({ nome: `${nome}`, numero: `${numero}` });
@@ -63,6 +86,8 @@ export default function Agenda() {
   };
 
   const atualizar_data = async (id) => {
+    
+    
     const { error } = await supabase
       .from("contatos")
       .update({ nome: novoNome, numero: novoNumero })
@@ -79,48 +104,64 @@ export default function Agenda() {
       setEditandoId(null); // sai do modo edição
     }
   };
+
+  const exportNumber = (number) =>{
+    setNumeroSelect(number)
+  }
   return (
     <>
-      <div >
-        <h1>cds</h1>
-        <input
+      <div className={styles.container}>
+        <h1>Agenda de Contatos</h1>
+
+          <input
           type="text"
           value={nome}
           placeholder="nome"
           onChange={(e) => setNome(e.target.value)}
-        />
+          />
         <input
-          type="text"
-          value={numero}
-          placeholder="numero"
-          onChange={handleNumber}
+        type="number"
+        value={numero}
+        placeholder="numero"
+        onChange={handleNumber}
         />
 
         <button onClick={inserir_data}>show</button>
         <ul>
-        {contato.map((elemento) => (
-            <li key={elemento.id}>
+          {carregando ? (
+  
+            <p>carregando contatos</p>
+          ):(
+          
+            contato.map((elemento) => (
+              <li key={elemento.id}>
               {editandoId === elemento.id ? (
                 <>
                   <input
                     type=""
                     value={novoNome}
                     onChange={(e) => setNovoNome(e.target.value)}
-                  />
+                    />
                   <input
                     type="text"
                     value={novoNumero}
                     onChange={(e) => setNovoNumero(e.target.value)}
-                  />
+                    />
 
+                <div>
                   <button onClick={() => atualizar_data(elemento.id)}>
                     salvar
                   </button>
                   <button onClick={() => setEditandoId(null)}>cancelar</button>
+                    </div>
                 </>
               ) : (
                 <>
-                  {elemento.nome} - {elemento.numero}
+                <div>
+                  {elemento.nome} <br />{(elemento.numero).replace(/\D/g, '').replace(/(\d{2})(\d{5})(\d{4})/, '($1)$2-$3')}
+                </div>
+                  <div>
+
                   <button onClick={() => deletar_data(elemento.id)}>
                     deletar
                   </button>
@@ -130,15 +171,20 @@ export default function Agenda() {
                       setNovoNome(elemento.nome);
                       setNovoNumero(elemento.numero);
                     }}
-                  >
+                    >
                     Atualizar
                   </button>
+                  <button
+                  onClick={()=> exportNumber(elemento.numero)}
+                  >Mensagem</button>
+                      </div>
                 </>
               )}
-            </li>
-        ))}
-        </ul>
-      </div>
-    </>
-  );
+              </li>
+            ))
+          )}
+          </ul>
+          </div>
+          </>
+        );
 }

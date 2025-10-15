@@ -1,0 +1,23 @@
+.cabecalho{
+    /* background-color: rgb(47, 47, 47); */
+        background-color: #121312;
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    color: beige;
+
+}
+
+.hyperlinks{
+    text-decoration: none;
+    background-color: #121312;
+    /* background-color: rgb(47, 47, 47); */
+    /* color: #a67d43; */
+    color: #ffdb89;
+    /* color: #ad0013; */
+    transition: 1s;
+
+}
+.hyperlinks:hover{
+    font-size: large;
+}
