@@ -9,4 +9,5 @@ export const Error = () => {
     <p>Opa amigão, ta perdido?</p>
     </>
   )
+  
 }

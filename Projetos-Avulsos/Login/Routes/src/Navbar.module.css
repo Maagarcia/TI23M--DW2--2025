@@ -21,3 +21,29 @@
 .hyperlinks:hover{
     font-size: large;
 }
+
+.bar{
+    display:none
+}
+
+@media (max-width: 768px){
+    .cabecalho{
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .bar{
+        display:block;
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        font-size: 25px;
+        cursor: pointer;
+        color: #ffdb89;
+    }
+
+    .hyperlinks{
+        display: none;
+    }
+}

@@ -1,0 +1,102 @@
+.lista{
+    color: #ffdb89; 
+    /* color: #a67d43; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* gap: 10px; */
+    width: fit-content;
+    padding: 8px;
+    width: 100%;
+}
+.linha{
+    padding: 3px;
+    /* display: flex; */
+    /* border: 1px solid  black; */
+    justify-content: space-between;
+}
+
+.item{
+    width: 33%;
+    overflow-x: auto;
+    border: 1px solid black ;
+    text-align: center;
+    /* background-color: lightgray; */
+
+}
+
+.tabela{
+    border: 2px solid black;
+    border-collapse: collapse;
+      width: 100%;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.cabecalho{
+    display: flex;
+    justify-content: space-around;
+    background-color: #121312;
+    padding: 3px;
+    width: 100%;
+}
+
+.itemCabecalho{
+    background-color: #121312;
+    text-align: center;
+    padding: 5px;
+    font-weight: bold;
+    color: #ffdb89;
+}
+
+.titulo{
+    display: flex;
+    justify-content: center;
+    color: #ffdb89;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.form{
+    display: flex;
+    justify-content: center;
+    /* width: 30%; */
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.inputs{
+    color: beige;
+    border: 1px solid black;
+    outline: none;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #121312;
+}
+
+.button{
+    background-color: #121312;
+    color: #ffdb89;
+    border: 1px solid black;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.button:hover{
+    background-color: #ffdb89;
+    color: #121312;
+}
+
+@media (max-width: 600px){
+    .form{
+        flex-direction: column;
+        align-items: center;
+    }
+    
+}

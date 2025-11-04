@@ -1,0 +1,19 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.colunas{
+    display: flex;
+    /* column-count: 2; */
+
+}
+.foto{
+    background-image: url(./ffcec3ef-d77d-4dce-ad3f-089031c1f0c1.jpeg);
+    width: 21.875rem;
+    height: 25rem;
+    background-size: cover;
+
+}

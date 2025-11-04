@@ -13,8 +13,10 @@ import { Error } from "./Error.jsx";
 import { Navbar } from "./Navbar.jsx";
 import { ProjetoEspecifico } from "./routes/ProjetoEspecifico.jsx";
 import TelaLogin from "./routes/TelaLogin.jsx";
+import { Estagio } from "./routes/Estagio/Estagio.jsx";
+import { Laura } from "./routes/Laura/Laura.jsx";
 
-
+ 
 // 
 const router = createBrowserRouter([
   // {
@@ -70,7 +72,16 @@ const router = createBrowserRouter([
       {
         path: "aboutme",
         element: <AboutMe/>
+      },
+      {
+        path: "estagio",
+        element: <Estagio/>
+      },
+      {
+        path: "ela",
+        element: <Laura/>
       }
+
     ],
   },
 ]);

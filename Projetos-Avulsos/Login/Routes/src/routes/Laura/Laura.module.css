@@ -1,0 +1,27 @@
+.imagem{
+    width: 21.875rem;
+    height: 25rem;
+    background-position:center ;
+    background-size: cover;
+    background-image: url(laura.jpeg)
+
+}
+
+.container{
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.texto{
+    color: beige;
+    /* background-color: aqua; */
+    max-width: 600px;
+    display: flex;
+    /* align-items: start; */
+    flex-direction: column;
+    /* border: 1px solid black; */
+    gap: 10px;
+}
