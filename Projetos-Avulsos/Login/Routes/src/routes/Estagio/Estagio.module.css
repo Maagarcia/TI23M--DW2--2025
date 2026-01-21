@@ -8,6 +8,7 @@
     width: fit-content;
     padding: 8px;
     width: 100%;
+    overflow-y: scroll;
 }
 .linha{
     padding: 3px;
@@ -26,11 +27,13 @@
 }
 
 .tabela{
+    height: 50vh;
     border: 2px solid black;
     border-collapse: collapse;
       width: 100%;
     display: flex;
     flex-direction: column;
+    /* overflow-y: scroll; */
     
 }
 

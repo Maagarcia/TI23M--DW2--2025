@@ -34,9 +34,6 @@ export default function Caixa() {
   };
 
   const handleChange = (e) => {
-    
-    
-   
     // console.log(palavra)
     setPalavra(e.target.value);
     if (e.target.value.length == palavraDoArray.length) {
@@ -55,7 +52,7 @@ export default function Caixa() {
         palavrasArray[Math.floor(Math.random() * palavrasArray.length)];
       setPalavra("");
     }
-  };
+  }; 
   return (
     <div className={styles.container}>
       <form action="" onSubmit={handleSubmit}>

@@ -30,6 +30,7 @@ export const Navbar = () => {
     <Link to='projects' className={styles.hyperlinks}>Projetos</Link>
     <Link to='estagio' className={styles.hyperlinks}>Estágio</Link>
     <Link to= 'ela' className={styles.hyperlinks}>Por quem você segue</Link>
+    <Link to='Bartolomeu' className={styles.hyperlinks}>RPG</Link>
       </>)
 
 

@@ -15,6 +15,7 @@ import { ProjetoEspecifico } from "./routes/ProjetoEspecifico.jsx";
 import TelaLogin from "./routes/TelaLogin.jsx";
 import { Estagio } from "./routes/Estagio/Estagio.jsx";
 import { Laura } from "./routes/Laura/Laura.jsx";
+import Bartolomeu from "./routes/RPG/Bartolomeu.jsx";
 
  
 // 
@@ -81,7 +82,10 @@ const router = createBrowserRouter([
         path: "ela",
         element: <Laura/>
       }
-
+      ,{
+        path: "Bartolomeu",
+        element: <Bartolomeu/>
+      }
     ],
   },
 ]);

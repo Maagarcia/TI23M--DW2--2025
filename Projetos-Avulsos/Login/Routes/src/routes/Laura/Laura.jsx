@@ -15,6 +15,8 @@ export const Laura = () => {
             <li>Para ser alguem melhor em vida por ela</li>
             <li>Para a pessoa mais importante da sua vida</li>
             <li>Sua princesa</li>
+            <li>A DONA DA VERDADE E DA SABEDORIA</li>
+            <li>A DEUSA DA BELEZA E DO AMOR</li>
         </div>
       </section>
     </>
