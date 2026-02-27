@@ -15,6 +15,8 @@ export const Estagio = () => {
 
   const [descricao, setDescricao] = useState("");
 
+  const [acumulado,setAcumulado] = useState(0)
+
   useEffect(() => {
     fetchEstagios();
   }, []);
@@ -75,6 +77,16 @@ export const Estagio = () => {
     }
   ;
 
+  const teste = (x,y) =>{
+    let total = x[0].Hora
+    let tamanho = y
+    for(let i = 0; i<tamanho; i++){
+      total += x[i].Hora
+    }
+
+    return total
+  }
+
   const diadehoje = () => {
     const hoje = new Date();
     const ano = hoje.getFullYear()
@@ -106,14 +118,16 @@ export const Estagio = () => {
           <tr className={styles.cabecalho}>
             <th className={styles.itemCabecalho} >Dia</th>
             <th className={styles.itemCabecalho} >Horas</th>
+            <th className={styles.itemCabecalho} >Horas Acumuladas</th>
             <th className={styles.itemCabecalho} >Descrição</th>
           </tr>
         </thead>
         <tbody className={styles.lista}>
-          {info.map((estagio) => (
+          {info.map((estagio,index) => (
             <tr key={estagio.id} className={styles.linha}>
               <td className={styles.item}>{estagio.dia}</td>
               <td className={styles.item}>{estagio.Hora}</td>
+              <td className={styles.item}>{teste(info, index)}</td>
               <td className={styles.item}>{estagio.descrição}</td>
               <td><button className={styles.button} onClick={()=> deletar_data(estagio.id)}>delete</button></td>
             </tr>
@@ -123,6 +137,8 @@ export const Estagio = () => {
 
       <h3>Tempo de estágio: {total}</h3>
       <h3>Tempo restante: {400 - total}</h3>
+
+    <button onClick={()=>console.log(info)}>ver infos</button>
     </>
   );
 };
